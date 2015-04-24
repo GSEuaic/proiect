@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DAE966FA-5952-BFBF-71F7-B2E6BF032AD4" schemaObject="424CFECC-3753-5407-EE0A-A8FA6E2BEFF2" name="CONTURI">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>SYS</sourceObjSchema>
+<sourceObjName>CONTURI</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCONT" id="5D1F288F-B9D2-94A2-65BF-6BCA12619026">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>CONTURI</sourceObjSchema>
+<sourceObjName>IDCONT</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USERNAME" id="5C9781A6-0729-0F02-8DBD-9AC960D48ECE">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>CONTURI</sourceObjSchema>
+<sourceObjName>USERNAME</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PASSWORD" id="7B291C62-85A3-C8DB-9015-EA561EF1FB38">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>CONTURI</sourceObjSchema>
+<sourceObjName>PASSWORD</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C68AC0A1-D13C-463B-A645-E39D7F7B071C" schemaObject="424CFECC-3753-5407-EE0A-A8FA6E2BEFF2" name="CONTURI_PK">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>SYS</sourceObjSchema>
+<sourceObjName>SYS_C006987</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5D1F288F-B9D2-94A2-65BF-6BCA12619026"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

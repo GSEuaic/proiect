@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="335C98EF-96B0-6754-D09B-FD8866FD8AD3" schemaObject="424CFECC-3753-5407-EE0A-A8FA6E2BEFF2" name="COMENTARII">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>SYS</sourceObjSchema>
+<sourceObjName>COMENTARII</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCOMENTARIU" id="C646D005-DA45-94EF-E966-265DA85F6B22">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>COMENTARII</sourceObjSchema>
+<sourceObjName>IDCOMENTARIU</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATAPOSTARII" id="6E9CB764-D695-C453-F931-E43C17DF66E2">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>COMENTARII</sourceObjSchema>
+<sourceObjName>DATAPOSTARII</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDCONT" id="7926A776-AACB-08AB-47CD-8BD0BEB5426E">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>COMENTARII</sourceObjSchema>
+<sourceObjName>IDCONT</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0ED7BF65-F884-28CC-2396-ACFC4776D00E" referredColumn="5D1F288F-B9D2-94A2-65BF-6BCA12619026"/>
+</associations>
+</Column>
+<Column name="IDPETITIE" id="E3F186FC-484D-FB62-A280-A56CD6CCEDA2">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>COMENTARII</sourceObjSchema>
+<sourceObjName>IDPETITIE</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="20ED54FF-D4E3-2F09-697E-3786B57889DF" referredColumn="E3A7979E-D624-2734-B6E5-B746A8981AA0"/>
+</associations>
+</Column>
+<Column name="TEXT" id="7CC31A66-30A7-E132-6BB7-1326F1D3B2FD">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>COMENTARII</sourceObjSchema>
+<sourceObjName>TEXT</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="569E7EAD-EE2D-F2E8-185F-FA7ECDC3BFD3" schemaObject="424CFECC-3753-5407-EE0A-A8FA6E2BEFF2" name="COMENTARII_PK">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>SYS</sourceObjSchema>
+<sourceObjName>SYS_C007168</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C646D005-DA45-94EF-E966-265DA85F6B22"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4C6A2C43-C668-DD92-7CC6-3CD6189CA616" name="SYS_C007169">
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:21 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7926A776-AACB-08AB-47CD-8BD0BEB5426E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="63223644-C922-2CE8-477D-615201595B9B" name="SYS_C007170">
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:21 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E3F186FC-484D-FB62-A280-A56CD6CCEDA2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

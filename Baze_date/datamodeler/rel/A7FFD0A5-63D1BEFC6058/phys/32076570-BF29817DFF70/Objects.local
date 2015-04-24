@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.storage.oracle.v11g.StorageDesignOraclev11g>
+   <object objectType="TSpace" objectID="022936BC-02E7-0A42-0E0D-171D8E9C0C80" name="SYSTEM" seqName="seg_0"/>
+   <object objectType="User" objectID="MDSYS" name="MDSYS" seqName="seg_0"/>
+   <object objectType="User" objectID="PUBLIC" name="PUBLIC" seqName="seg_0"/>
+   <object objectType="User" objectID="D7247625-ACCB-2915-0776-F92534B5A191" name="SYS" seqName="seg_0"/>
+   <object objectType="SType" objectID="47E390DE-0671-C4B1-8428-0F45CBEE18F8" name="SDO_GEOMETRY" seqName="seg_0"/>
+   <object objectType="SType" objectID="F72C39E0-D1CA-8821-2AD7-A1E95A37D3D1" name="XMLTYPE" seqName="seg_0"/>
+   <object objectType="Table" objectID="335C98EF-96B0-6754-D09B-FD8866FD8AD3" name="COMENTARII" seqName="seg_0"/>
+   <object objectType="Table" objectID="4FA84142-A57A-0D37-1E8B-B317FB14A026" name="PETITIIAPROBATE" seqName="seg_0"/>
+   <object objectType="Table" objectID="B9B0ECB9-55A9-BB4A-E8C9-4EF9C31762E7" name="PETITIINEAPROBATE" seqName="seg_0"/>
+   <object objectType="Table" objectID="DAE966FA-5952-BFBF-71F7-B2E6BF032AD4" name="CONTURI" seqName="seg_0"/>
+   <object objectType="Table" objectID="DBC8D517-136F-7ACC-51ED-43DB8C23EA11" name="VOTURI" seqName="seg_0"/>
+   <object objectType="Segment" objectID="62BF3D76-B62F-136A-E2FA-747FD634C76F" name="Storage1" seqName="seg_0"/>
+   <object objectType="Segment" objectID="68B09373-6477-F1A1-A0E8-7276D490DB8C" name="Storage6" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.storage.oracle.v11g.StorageDesignOraclev11g>

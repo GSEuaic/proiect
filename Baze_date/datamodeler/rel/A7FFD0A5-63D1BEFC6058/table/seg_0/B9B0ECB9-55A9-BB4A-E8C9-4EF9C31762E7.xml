@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B9B0ECB9-55A9-BB4A-E8C9-4EF9C31762E7" schemaObject="424CFECC-3753-5407-EE0A-A8FA6E2BEFF2" name="PETITIINEAPROBATE">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>SYS</sourceObjSchema>
+<sourceObjName>PETITIINEAPROBATE</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDPETITIE" id="DA059423-F5A1-A9C4-5D77-A6A57359EF8A">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>PETITIINEAPROBATE</sourceObjSchema>
+<sourceObjName>IDPETITIE</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDINITIATOR" id="0420F3C9-36D5-C621-E7EE-6BAC5DAE038C">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>PETITIINEAPROBATE</sourceObjSchema>
+<sourceObjName>IDINITIATOR</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8FA1F386-A575-28F3-B85D-1E2327B39B61" referredColumn="5D1F288F-B9D2-94A2-65BF-6BCA12619026"/>
+</associations>
+</Column>
+<Column name="NUME" id="A14C89DF-7417-317A-20AB-62B28F8223F0">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>PETITIINEAPROBATE</sourceObjSchema>
+<sourceObjName>NUME</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>22 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESTINATAR" id="968625E5-AAD9-FA02-3E2B-A3F4E217E99A">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>PETITIINEAPROBATE</sourceObjSchema>
+<sourceObjName>DESTINATAR</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESCRIERE" id="269344DB-34E8-A5F2-8178-A3FEB314FB3C">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>PETITIINEAPROBATE</sourceObjSchema>
+<sourceObjName>DESCRIERE</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CATEGORIE" id="08FA10BC-D0F2-E777-06E8-ECDA0FC6F006">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>PETITIINEAPROBATE</sourceObjSchema>
+<sourceObjName>CATEGORIE</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3F8C63BA-6DF0-F566-9A46-A90055150567" schemaObject="424CFECC-3753-5407-EE0A-A8FA6E2BEFF2" name="PETITIINEAPROBATE_PK">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>SYS</sourceObjSchema>
+<sourceObjName>SYS_C007181</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA059423-F5A1-A9C4-5D77-A6A57359EF8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6880E2B5-3DC8-F6E0-AA89-60697DB55CC8" name="SYS_C007182">
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:21 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0420F3C9-36D5-C621-E7EE-6BAC5DAE038C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

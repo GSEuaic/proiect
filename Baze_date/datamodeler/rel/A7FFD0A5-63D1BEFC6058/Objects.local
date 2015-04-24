@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="SchemaObject" objectID="424CFECC-3753-5407-EE0A-A8FA6E2BEFF2" name="SYS" seqName="seg_0"/>
+   <object objectType="Table" objectID="335C98EF-96B0-6754-D09B-FD8866FD8AD3" name="COMENTARII" seqName="seg_0"/>
+   <object objectType="Table" objectID="DAE966FA-5952-BFBF-71F7-B2E6BF032AD4" name="CONTURI" seqName="seg_0"/>
+   <object objectType="Table" objectID="4FA84142-A57A-0D37-1E8B-B317FB14A026" name="PETITIIAPROBATE" seqName="seg_0"/>
+   <object objectType="Table" objectID="B9B0ECB9-55A9-BB4A-E8C9-4EF9C31762E7" name="PETITIINEAPROBATE" seqName="seg_0"/>
+   <object objectType="Table" objectID="DBC8D517-136F-7ACC-51ED-43DB8C23EA11" name="VOTURI" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="21F93797-BBEB-D56D-DB8A-590CAAD94C2D" name="SYS_C006991" seqName="seg_0" containerID="4FA84142-A57A-0D37-1E8B-B317FB14A026" refContainerID="DAE966FA-5952-BFBF-71F7-B2E6BF032AD4"/>
+   <object objectType="FKIndexAssociation" objectID="192EFBF6-61D5-6950-B2A7-27D7F598B66C" name="SYS_C006992" seqName="seg_0" containerID="DBC8D517-136F-7ACC-51ED-43DB8C23EA11" refContainerID="4FA84142-A57A-0D37-1E8B-B317FB14A026"/>
+   <object objectType="FKIndexAssociation" objectID="0ED7BF65-F884-28CC-2396-ACFC4776D00E" name="SYS_C007169" seqName="seg_0" containerID="335C98EF-96B0-6754-D09B-FD8866FD8AD3" refContainerID="DAE966FA-5952-BFBF-71F7-B2E6BF032AD4"/>
+   <object objectType="FKIndexAssociation" objectID="20ED54FF-D4E3-2F09-697E-3786B57889DF" name="SYS_C007170" seqName="seg_0" containerID="335C98EF-96B0-6754-D09B-FD8866FD8AD3" refContainerID="4FA84142-A57A-0D37-1E8B-B317FB14A026"/>
+   <object objectType="FKIndexAssociation" objectID="8FA1F386-A575-28F3-B85D-1E2327B39B61" name="SYS_C007182" seqName="seg_0" containerID="B9B0ECB9-55A9-BB4A-E8C9-4EF9C31762E7" refContainerID="DAE966FA-5952-BFBF-71F7-B2E6BF032AD4"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

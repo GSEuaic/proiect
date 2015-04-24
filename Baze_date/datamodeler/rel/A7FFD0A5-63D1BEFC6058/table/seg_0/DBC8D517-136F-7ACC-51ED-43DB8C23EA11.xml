@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DBC8D517-136F-7ACC-51ED-43DB8C23EA11" schemaObject="424CFECC-3753-5407-EE0A-A8FA6E2BEFF2" name="VOTURI">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>SYS</sourceObjSchema>
+<sourceObjName>VOTURI</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCONT" id="F7EF7126-FA7F-9EFD-828F-53C98935AD8C">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>VOTURI</sourceObjSchema>
+<sourceObjName>IDCONT</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PETITIEVOTATA" id="C9B1745C-FB89-247C-2196-D1520411D497">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>VOTURI</sourceObjSchema>
+<sourceObjName>PETITIEVOTATA</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="192EFBF6-61D5-6950-B2A7-27D7F598B66C" referredColumn="E3A7979E-D624-2734-B6E5-B746A8981AA0"/>
+</associations>
+</Column>
+<Column name="IP" id="1442FC2F-B162-D906-5010-696A4D1DE009">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjSchema>VOTURI</sourceObjSchema>
+<sourceObjName>IP</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:20 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="10D6EA55-3463-BB64-86D8-C0BE08224BA1" name="SYS_C006992">
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:21 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C9B1745C-FB89-247C-2196-D1520411D497"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

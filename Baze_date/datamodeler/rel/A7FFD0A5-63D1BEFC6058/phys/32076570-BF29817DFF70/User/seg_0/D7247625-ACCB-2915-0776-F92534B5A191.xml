@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="SYS" directorySegmentName="seg_0" id="D7247625-ACCB-2915-0776-F92534B5A191">
+<sourceConnName>localhost</sourceConnName>
+<sourceObjName>SYS</sourceObjName>
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-24 16:30:19 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<schemaObject>424CFECC-3753-5407-EE0A-A8FA6E2BEFF2</schemaObject>
+</UserOraclev10g>
