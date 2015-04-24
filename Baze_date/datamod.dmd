@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="datamod" id="6341955B-0BF9-C646-911C-F4DE408EF2A0" version="3.5">
+<createdBy>GeorgeStafie</createdBy>
+<createdTime>2015-04-20 17:59:12 UTC</createdTime>
+<ownerDesignName>datamod</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>6341955B-0BF9-C646-911C-F4DE408EF2A0</designId>
+</OSDM_Design>

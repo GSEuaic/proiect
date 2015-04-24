@@ -1,0 +1,110 @@
+"•       Crearea unei Aplicatii Web + ""Responsive design"" pentru dispozitive mobile;
+
+•       Generarea de rapoarte pentru administratori (HTML + CSV + PDF): starea petitiilor, numarul de solicitanti, destinatarii petitiilor etc.;
+
+•       Restrictionarea persoanelor de a vota o singura data o petitie;
+
+•       Partajarea datelor referitoare la petitii pe diverse retele sociale;
+
+•       BONUS: Anonimitatea utilizatorilor in rapoartele publice;
+
+•       BONUS: Alte metode de a restrictiona votul o singura data: localizarea utilizatorului, validarea IP-ului, etc."
+
+[Schita]
+
+
+Cerinte Obligatorii (fara de care proiectul nu poate fi prezentat):
+
+Proiectul pe care il dezvoltati poate fi realizat 
+in orice limbaj de programare (PHP, JAVA, C etc.) 
+dar trebuie neaparat sa utilizeze in spate o baza 
+de date Oracle.
+
+Pentru saptamana a 7a (cu posibilitate de prezentare 
+in saptamana a 8a, trebuie sa aveti:
+
+- o descriere a proiectului, schema de baze de date pe care o veti
+utiliza, scriptul de creare al tabelelor, un script PL/SQL 
+de populare al tabelelor (asemanator scripturilor
+utilizate in cadrul temei nr.4).
+
+- trebuie sa aveti macar 4 tabele legate intre
+ele prin diverse relatii, una dintre ele continand
+un numar mare de inregistrari (peste 500.000).
+
+- pentru tabelele create ganditi-va la posibilele 
+interogari pe care le veti efectua asupra lor si tineti
+cont de acestea pentru a crea indecsi ce vor eficientiza 
+cautarea informatiilor dorite. Demonstrati prin 
+intermediul planului de executie ca acesti indecsi sunt
+intr-adevar folositi. Cu cat mai putini indecsi consturiti
+pentru mai multe selecturi, cu atat mai bine.
+Atentie: nu "inventati" selecturi inutile doar ca sa 
+demonstrati ca se merge pe index. Selecturile pe care
+acum le prezentati trebuie sa fie efectiv utilizate
+in aplicatia finala.
+
+
+Cerinte optionale (pentru fiecare veti acumula puncte): 
+
+
+In cadrul proiectului final studentul/studentii trebuie sa:
+
+
+1. Permita incarcarea de date dintr-un fisier CSV prin
+   intermediul unei proceduri PL/SQL (ce va incarca un
+   numar mare de date din fisierul CSV). Daca fisierul
+   contine date eronate atunci nici o inregistrare nu va
+   fi adaugata in baza de date si se va afisa utilizatorului
+   pe ce linie apare eroarea.
+   
+2. Permita preluarea de date dintr-un formular al aplicatiei
+   precum si modificarea acestora (tot in cadrul unui 
+   formular).   
+
+3. Demonstreze ca doua tranzactii efectuate simultan 
+   (din browsere diferite) nu duc la inconsistenta bazei 
+   de date.
+
+4. Faca paginarea datelor din tabelul continand 500.000
+   de inregistrari dupa ce a fost facut join cu unul
+   din celelalte tabele (prima pagina nu va avea buton 
+   previous si ultima nu va avea buton pentru next).
+
+5. Utilizeze macar un trigger pentru a updata automat
+   anumite date (de exemplu pentru auto-incrementarea
+   unui id).
+
+6. Utilizeze un pachet ce va contine diverse functii/proceduri 
+  (netriviale) ce vor facilita accesul la date.
+
+7. Utilizeze macar doua tipuri de colectii, doua tipuri de 
+   obiecte si a doua viewuri.
+
+8. Arunce exceptii particulare care vor fi prinse si
+   afisate de aplicatie in mod corespunzator (de exemplu pentru
+   date incorecte introduse la punctele 1, 2).
+
+
+
+
+
+
+
+- pentru un proiect puteti lucra in grupe de doua persoane,
+  fiecare dintre voi trebuie sa cunoasteti ceea ce se 
+  intampla in cadrul proiectului.
+
+- pentru cei care lucreaza in grupe mai mari de doua 
+  persoane (conform proiectelor de la TW) cerintele se vor 
+  mari cu 50% (de exemplu la punctul 6 se vor face 3 tipuri 
+  de colectii etc.). Prezentarea se va face tot in grupe de 
+  cate doi studenti. 
+
+- nu este neaparat ca ambii studenti ce prezinta un acelasi
+  proiect sa fie punctati la fel.
+
+- pentru fiecare dintre punctele de mai sus vor fi trecute
+  (ca si comentarii) numele autorilor. Numai acestia vor fi
+  intrebati din respectivele puncte si numai acestia vor 
+  primi punctele in cazul raspunsurilor corecte.
