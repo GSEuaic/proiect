@@ -1,0 +1,80 @@
+body {
+  font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding:10% 5% 0% 5%;
+  position:center;
+  font-size: 13px;
+  background-color: #95CAE4;
+}
+
+.content{
+  float:left;
+  width:60%;
+
+}
+.campGeneral {
+  color:#3F5D7D;
+  background: #fff;
+  margin: 0 auto;
+  padding: 50 100 50 100px;
+  text-align: center;
+  /* border-radius */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+  -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+  box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+}
+.camp  {
+  border: 0.083rem solid #b6bcc9;
+  border-radius: 5px;
+}
+.camp .campMic{
+    background:#95CAE4;
+    height: 25px;
+    border-radius:3px;
+    width:100%;
+}
+.camp .campMare{
+  background:#95CAE4;
+  height: 100px;
+  border-radius:3px;
+  width:100%;
+}
+p{
+  font-size: 15px;
+}
+
+.specificatiiExtra{
+  font-size:10px;
+  padding-top: 40px;
+}
+.select{ 
+  background:#95CAE4;
+  height:25px;
+  line-height:40px;
+  color:#3F5D7D;
+  font-size:14px;
+  cursor:pointer;
+  width:50%;
+}
+.titlu{
+  font-size: 20px;
+  position:relative;
+  top: -20px;
+}
+.sidebar{
+float:left;
+padding: 50px;
+margin-left: 1%;
+width:25%;
+
+}
+
+
+.ultimeleComentarii{
+  margin-top:10px;
+}
+.campGeneral .sidebar{
+  position:fixed;
+}
