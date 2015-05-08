@@ -34,11 +34,11 @@ create table petitiiNeaprobate(
     )
 /
 /
-insert into petitiiAprobate values(10,0,100,'nume',3,'descriere')
+--insert into petitiiAprobate values(10,0,100,'nume',3,'descriere')
 /
 --insert into petitiiAprobate(idPetitie,voturi,idInitiator,nume,destinatar,descriere) values ($nume,$email,$descriere,$destinatar);
 /
-select * from petitiiaprobate;
+--select * from petitiiaprobate;
 
 create table Conturi(
     idCont number(10) primary key,
@@ -47,7 +47,7 @@ create table Conturi(
     )
     
 /
-insert into conturi values(100,'userSpam','haha')
+--insert into conturi values(100,'userSpam','haha')
 
 /
 
@@ -66,16 +66,14 @@ create table voturi(
     ip varchar(50)
     );
     /
-    
+    /*
     create or replace procedure createSpam is
     idcom number;
     begin
     idcom := 0;
     for i in 1 .. 500000 loop
         insert into Comentarii  values(idcom,SYSDATE,100,10,dbms_random.string('L', 20));
-        idcom := idcom +1;
-        
-        
+        idcom := idcom +1;        
     end loop;
     end;
     /
@@ -84,3 +82,5 @@ create table voturi(
     end;
     /
     select * from comentarii;
+    
+    */
