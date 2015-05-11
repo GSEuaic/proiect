@@ -2,7 +2,7 @@
 
 <body>
     <div class="content">
-        <form action="ceva.php" method="post">
+        <form action="test.php" method="post">
             <div class="campGeneral camp">
                 <p class="titlu"> Adauga o petitie noua</p>
                 <p >Nume,prenume*<br />
@@ -12,7 +12,7 @@
                 <p>Descrierea problemei<br />
                     <input class="campMare" type="text" name="descriere" value="" size="40"  /></p>
                     <p>Categorie:
-                        <select class="select" name="categorie" id="categoriePetitie" required>
+                        <select class="select" name="categorie" id="categoriePetitie" required>  ////insert php to get categories
                         <option value='1' >Mediu inconjurator</option>
                         <option value='2' >TV</option>
                         <option value='3' >etc</option>
@@ -26,17 +26,19 @@
             </div>
         </form>
     </div>
-    <div class="campGeneral sidebar ultimelePetitii"> 
+    <div class="sidebar">
+    <div class="campGeneral ultimelePetitii"> 
             <p class="titlu">Ultimele petitii adaugate:</p>
             <p>1. Hodor HOdor HODOR hohohodor Hodor HOdor </p>
             <p>2. HODOR hohohodor Hodor HOdor HODOR hohohodor</p>
             <p>3. hohohodor Hodor HOdor HODOR hohohodor </p> 
     </div>   
-    <div class="campGeneral sidebar ultimeleComentarii">
+    <div class="campGeneral ultimeleComentarii">
          <p class="titlu">Ultimele petitii adaugate:</p>
             <p>1. Hodor HOdor HODOR hohohodor Hodor HOdor </p>
             <p>2. HODOR hohohodor Hodor HOdor HODOR hohohodor</p>
             <p>3. hohohodor Hodor HOdor HODOR hohohodor </p>
     </div>
+</div>
 </body>
 

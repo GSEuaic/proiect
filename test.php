@@ -1,7 +1,7 @@
 <?php
 
 $c = oci_connect("system", "sys", "localhost/XE");
-$s = oci_parse($c, "insert into PETITIINEAPROBATE(nume,email,descriere,desinatar) values ('$nume','$email','$descriere','$destinatar')";
+$s = oci_parse($c, "select * from dual";
 
 $r = oci_execute($s);
 

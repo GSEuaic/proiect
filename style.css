@@ -1,21 +1,23 @@
 body {
   font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  padding:10% 5% 0% 5%;
+  padding:5% 5% 0% 5%;
   position:center;
   font-size: 13px;
   background-color: #95CAE4;
+  width: 90%;
 }
-
+/*
 .content{
   float:left;
-  width:60%;
-
+  width:55%;    
+  position: relative;
 }
+*/
 .campGeneral {
   color:#3F5D7D;
   background: #fff;
   margin: 0 auto;
-  padding: 50 100 50 100px;
+  padding:5% 5% 0% 5%;
   text-align: center;
   /* border-radius */
   -webkit-border-radius: 5px;
@@ -60,21 +62,24 @@ p{
 }
 .titlu{
   font-size: 20px;
-  position:relative;
-  top: -20px;
+  text-align: center;
 }
 .sidebar{
 float:left;
-padding: 50px;
-margin-left: 1%;
-width:25%;
-
+padding-left: 1%;
+width:33%;
+position: relative;
+padding-bottom: 1%;
 }
-
-
+.content{
+  float:left;
+  width:55%;    
+  position: relative;
+}
 .ultimeleComentarii{
-  margin-top:10px;
+  margin-top: 1%;
 }
-.campGeneral .sidebar{
-  position:fixed;
+header div{
+  background-color: blue;
+  width: 99.5%;
 }

@@ -3,11 +3,12 @@ create table petitiiAprobate(
     idPetitie number(10) primary key,
     voturi number(10),
     idInitiator number(10) references Conturi(idCont),
-    nume varchar2(22),
-    destinatar number(10),
+    nume varchar2(100),
+    destinatar number(100),
     descriere varchar2(500),
-    categorie varchar2(100)
+    categorie number
     );
+    //de adaugat tabel cu categorii
 create table petitiiNeaprobate(
     idPetitie number(10) primary key,
     idInitiator number(10) references Conturi(idCont),
