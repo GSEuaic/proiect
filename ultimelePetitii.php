@@ -1,26 +1,23 @@
 <?php
-
-$c = oci_connect("system", "sys", "localhost/XE");
-echo "fuck";
-$s = oci_parse($c, "select * from conturi");
-$r = oci_execute($s);
-
-echo "<table border='1'>\n";
-$ncols = oci_num_fields($s);
-echo "<tr>";
-for ($i = 1; $i <= $ncols; ++$i) {
-	$colname = oci_field_name($s, $i);
-	echo "  <th><b>".htmlentities($colname, ENT_QUOTES)."</b></th>\n";
+$conn = oci_connect("system", "sys", "localhost/XE");
+if (!$conn) {
+    $m = oci_error();
+    trigger_error(htmlentities($m['message']), E_USER_ERROR);
 }
-echo "</tr>\n";
 
-while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-	echo "<tr>\n";
-	foreach ($row as $item) {
-		echo "  <td>".($item!==null?htmlentities($item, ENT_QUOTES):"&nbsp;")."</td>\n";
-	}
-	echo "</tr>\n";
+$sql = 'SELECT * FROM petitiiAprobate where rownum<4';
+$stid = oci_parse($conn, $sql);
+# $didbv = 60;
+# oci_bind_by_name($stid, ':didbv', $didbv);
+oci_execute($stid);
+while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
+    echo '<div class="campGeneral">
+    <h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME'] ."</a></h2>
+    <br><h3>".$row['DESCRIERE']."</h3>
+    </div>";
 }
-echo "</table>\n";
+
+oci_free_statement($stid);
+oci_close($conn);
 
 ?>

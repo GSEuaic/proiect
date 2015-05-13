@@ -2,8 +2,11 @@
 
 $c = oci_connect("system", "sys", "localhost/XE");
 
-$myfile = fopen("initializare.sql", "r") or die("Unable to open file!");
-$continut = fread($myfile,filesize("initializare.sql"));
+$sqlName="initializare.sql";
+
+
+$myfile = fopen($sqlName, "r") or die("Unable to open file!");
+$continut = fread($myfile,filesize($sqlName));
 $instructiuni = explode("/", $continut);
 foreach ($instructiuni as $instructiune) {
 	echo $instructiune;
