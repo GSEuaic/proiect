@@ -1,0 +1,1 @@
+insert into conturi values(101,'huserSpam','haha');

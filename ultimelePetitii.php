@@ -7,7 +7,7 @@ $r = oci_execute($s);
 
 echo "<table border='1'>\n";
 $ncols = oci_num_fields($s);
-echo "<tr">\n";
+echo "<tr>";
 for ($i = 1; $i <= $ncols; ++$i) {
 	$colname = oci_field_name($s, $i);
 	echo "  <th><b>".htmlentities($colname, ENT_QUOTES)."</b></th>\n";

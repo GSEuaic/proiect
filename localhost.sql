@@ -12,16 +12,16 @@ De asemenea, se va oferi suport pentru partajarea datelor referitoare la petitii
 •       Partajarea datelor referitoare la petitii pe diverse retele sociale;
 
 */
-
+/*
 create table Conturi(
     idCont number(10) primary key,
     username  varchar2(100),
     password varchar2(100)
     )
     
-/
+*/
 insert into conturi values(100,'userSpam','haha')
-/
+/*
 drop table petitiiAprobate;
 create table petitiiAprobate(
     idPetitie number(10) primary key,
@@ -32,7 +32,7 @@ create table petitiiAprobate(
     descriere varchar2(500),
     categorie varchar2(100)
     )
-/
+/*
 create table petitiiNeaprobate(
     idPetitie number(10) primary key,
     idInitiator number(10) references Conturi(idCont),
@@ -88,3 +88,4 @@ create table voturi(
     /
     select * from comentarii;
     delete from comentarii where idcomentariu>10;
+    

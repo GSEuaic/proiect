@@ -5,6 +5,7 @@
 	<title> Pet4Web Main Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<!--
 <div class="camp login" id="LOGIN">
 	<nav class="Meniu">
 		<form action="login.php">
@@ -15,8 +16,12 @@
 		</form>
 		
 	</nav>
-</div>	
+</div>	-->
+<?php 
+	include 'loginBar.php'; 
+?>
 <HEADER id="cuPadding">
+<!--
 <div class="camp" >
 	<nav class="Meniu">
 	<a href="home">Home</a>
@@ -24,6 +29,8 @@
 	<a href="/random.html">Petitie aleatoare</a>	
 	</nav>
 </div>
+-->
+<?php include 'header.php'; ?>
 </HEADER>
 <body>
 <div class="content campGeneral camp">
