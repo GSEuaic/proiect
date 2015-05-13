@@ -17,10 +17,9 @@ $stid = oci_parse($conn, $sql);
 # oci_bind_by_name($stid, ':didbv', $didbv);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-    echo '<div class="campGeneral">
-    <h2><a href="seePetitionInfo.php?idPet='.$row['IDCOMENTARIU'].'">'.$row['NUME'] ."</a></h2>
-    <br><h3>".$row['TEXTCOMENTARIU']."</h3>
-    </div>";
+    echo '<div class="campGeneral"><h2>'.$row['TEXTCOMENTARIU'].'</h2>';
+    echo'la petitia: <a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME']."</a></h2>";
+    echo '<br></div>';
 }
 oci_free_statement($stid);
 oci_close($conn);
