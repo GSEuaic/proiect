@@ -1,4 +1,7 @@
 <?php
+
+echo '<p> <h2>Ultimele petitii:</h2></p>';
+
 $conn = oci_connect("system", "sys", "localhost/XE");
 if (!$conn) {
     $m = oci_error();
@@ -11,9 +14,9 @@ $stid = oci_parse($conn, $sql);
 # oci_bind_by_name($stid, ':didbv', $didbv);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-    echo '<div class="campGeneral">
-    <h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME'] ."</a></h2>
-    <br><h3>".$row['DESCRIERE']."</h3>
+    echo '<div class="campGeneral ">
+    <h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME'] ."</a>
+    <br>".$row['DESCRIERE']."</h2>
     </div>";
 }
 
