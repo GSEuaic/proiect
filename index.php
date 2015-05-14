@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta http-equiv="refresh" content="200" >
+	<meta http-equiv="refresh" content="2300" >
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title> Pet4Web Main Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">

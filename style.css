@@ -1,10 +1,10 @@
 body {
   font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding:0 5 0 5%;
-  position:center;
   font-size: 13px;
   background-color: #95CAE4;
   width: 90%;
+  margin-top: 0%;
 }
 
 /* Sidebar */
@@ -106,8 +106,7 @@ p{
 
 /* Meniu */
 
-/*
-.Meniu a,input{
+/*.Meniu a,input{
   -moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
   -webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
   box-shadow: 0px 1px 0px 0px #f0f7fa;
@@ -157,19 +156,30 @@ p{
   background-color:#3F5D7D;
 
 }
-.Meniu{
+.Meniu a{
   position: relative;
+  zmargin: 5% auto;
+  padding:5 3 5 3%;
+  text-align: left;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  box-shadow: 0.3em 0.3em red,-0.3em -0.3em red;
+  padding-right:5%;
 }
 #cuPadding {
-  padding-top: 5.5%;
+  zpadding-top: 15.5%;
+  padding-top: calc(0.5% + 1em + 2% + 2.5em );
 }
 
 /* Bara login*/
 
 #campLogin{
+  padding-left:1%;
   width: 20%
 }
-
+form {
+  padding: 1%;
+}
 #LOGIN .Meniu form Input{
   zvisibility: hidden;
 }
@@ -196,3 +206,4 @@ header div{
   margin-bottom: 1%;
   padding: 0.5%;
 }
+
