@@ -14,7 +14,7 @@ $stid = oci_parse($conn, $sql);
 # oci_bind_by_name($stid, ':didbv', $didbv);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-    echo '<div class="campGeneral ">
+    echo '<div class="campSidebar ">
     <h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME'] ."</a>
     <br>".$row['DESCRIERE']."</h2>
     </div>";

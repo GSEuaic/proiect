@@ -1,7 +1,5 @@
+<p> <h2>Ultimele comentarii:</h2></p>
 <?php
-
-echo '<p> <h2>Ultimele comentarii:</h2></p>';
-
 $conn = oci_connect("system", "sys", "localhost/XE");
 if (!$conn) {
     $m = oci_error();
@@ -12,7 +10,7 @@ $sql = 'SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentar
 $stid = oci_parse($conn, $sql);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-    echo '<div class="campGeneral"><h2>'.$row['USERNAME'].'  a comentat: <br>'.substr($row['TEXTCOMENTARIU'],0,50).'...</h2>';
+    echo '<div class="campSidebar "><h2>'.$row['USERNAME'].'  a comentat: <br>'.substr($row['TEXTCOMENTARIU'],0,50).'...</h2>';
     echo'la petitia: <a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME']."</a></h2>";
     echo '<br></div>';
 }

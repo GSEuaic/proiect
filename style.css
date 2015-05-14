@@ -1,26 +1,54 @@
 body {
   font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  padding:0% 5% 0% 5%;
+  padding:0 5 0 5%;
   position:center;
   font-size: 13px;
   background-color: #95CAE4;
   width: 90%;
 }
+
+/* Sidebar */
+
 .titluSidebar{
-  padding: 1%;
+  padding: 10%; 
 }
-/*
-.content{
-  float:left;
-  width:55%;    
-  position: relative;
+
+.campSidebar{
+
+  color:#3F5D7D;
+  background: #fff;
+  margin: 5% auto;
+  padding:5 3 5 3%;
+  text-align: left;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  box-shadow: 0.3em 0.3em red,-0.3em -0.3em red;
 }
-*/
+
+.sidebar{
+float:left;
+padding-left: 1%;
+width:33%;
+position: relative;
+padding-bottom: 1%;
+}
+
+
+.ultimeleComentarii{
+  margin-top: 10%;
+}
+.ultimelePetitii {
+  padding-bottom: 50%;#no mere
+}
+/* Campuri */
+
 .campGeneral {
   color:#3F5D7D;
   background: #fff;
   margin: 0 auto;
-  padding:5% 5% 0% 5%;
+  zpadding:5% 5% 0% 5%;
+  padding:5%;
+  margin-bottom: 3%;
   text-align: center;
   /* border-radius */
   -webkit-border-radius: 5px;
@@ -30,22 +58,34 @@ body {
   -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
   box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
 }
+
 .camp  {
   border: 0.083rem solid #b6bcc9;
   border-radius: 5px;
 }
+
 .camp .campMic{
     background:#95CAE4;
     height: 25px;
     border-radius:3px;
     width:100%;
 }
+
 .camp .campMare{
   background:#95CAE4;
   height: 100px;
   border-radius:3px;
   width:100%;
 }
+
+/* Content*/
+
+.content{
+  float:left;
+  width:55%;    
+  position: relative;
+}
+
 p{
   font-size: 15px;
 }
@@ -63,33 +103,10 @@ p{
   cursor:pointer;
   width:50%;
 }
-.titlu{
-  font-size: 20px;
-  text-align: center;
-}
-.sidebar{
-float:left;
-padding-left: 1%;
-width:33%;
-position: relative;
-padding-bottom: 1%;
-}
-.content{
-  float:left;
-  width:55%;    
-  position: relative;
-}
-.ultimeleComentarii{
-  margin-top: 1%;
-}
-header div{
-  width: 98%;
-  color:#3F5D7D;
-  background: #fff;
-  margin-bottom: 1%;
-  padding: 0.5%;
-}
 
+/* Meniu */
+
+/*
 .Meniu a,input{
   -moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
   -webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
@@ -130,6 +147,7 @@ header div{
   position:relative;
   top:1px;
 }
+*/
 .login{
   position:fixed;
   z-index: 1;
@@ -145,15 +163,36 @@ header div{
 #cuPadding {
   padding-top: 5.5%;
 }
+
+/* Bara login*/
+
 #campLogin{
   width: 20%
 }
-form a {
-  float:right;
-}
+
 #LOGIN .Meniu form Input{
   zvisibility: hidden;
 }
+
 #LOGIN{
   padding-top: 0.5%;
+}
+
+/* Misc */
+
+form a {
+  float:right;
+}
+
+.titlu{
+  font-size: 20px;
+  text-align: center;
+}
+
+header div{
+  width: 98%;
+  color:#3F5D7D;
+  background: #fff;
+  margin-bottom: 1%;
+  padding: 0.5%;
 }
