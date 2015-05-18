@@ -125,6 +125,5 @@ drop procedure adaugaCont
 create procedure adaugaCont(user varchar2, pass varchar2) as
 idcont number;
 begin
-    insert into conturi values(getContId(),user,pass);
+    insert into conturi values(getNewContId(),user,pass);
 end adaugaCont;
-/
