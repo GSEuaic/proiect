@@ -4,7 +4,9 @@
 			<input id="campLogin" type="text" class="campMic" value="User" name="loginUser">
 			<input id="campLogin" type="password" class="campMic"  name="loginPass">
 			<input type="submit" value="Log In"/>
+			<a href="/adaugaPetitie.php">Adauga Petitie</a>
 			<a href="/signup.html"> Sign Up</a>
+
 		</form>
 	</nav>
 </div>

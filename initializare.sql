@@ -12,8 +12,8 @@ create table petitiiAprobate(
     idPetitie number(10) primary key,
     voturi number(10),
     idInitiator number(10) references Conturi(idCont),
-    nume varchar2(22),
-    destinatar number(10),
+    nume varchar2(100),
+    destinatar varchar2(100),
     descriere varchar2(500),
     categorie varchar2(100),
     dataPostare date
@@ -84,3 +84,47 @@ insert into comentarii values(1,sysdate,100,1,'comaodmfoadsmf asdfoasdfoasmdo fa
 insert into comentarii values(2,sysdate,100,1,'comaodmfofaosdkf oaskdfokasdofkoas dkf')
 /
 insert into comentarii values(5,sysdate,100,1,'kasdofkoas dkf')
+/
+drop  procedure getName
+/
+create procedure getName(id_Pet number, numePet out varchar2, descPet out varchar2) as
+    begin
+    select descriere,nume into descPet,numePet from PetitiiAprobate where idPetitie=id_Pet; 
+end getName;
+/
+drop function getNoOfPetitions
+/
+create function getNoOfPetitions return number is
+nr number;
+begin
+    select max(idPetitie)+1 into nr from petitiiAprobate;
+    return nr;
+end getNoOfPetitions;
+/
+drop procedure adaugaPetitie
+/
+create procedure adaugaPetitie(idInitiator number,nume varchar2,destinatar varchar2,descriere varchar2,categorie varchar2)
+is
+begin
+    insert into petitiiAprobate values(getNoOfPetitions()+1,0,idInitiator,nume,destinatar,descriere,categorie,sysdate);
+end adaugaPetitie;
+/
+drop function getNewContid
+/
+create function getNewContid return number
+    as
+    idc number;
+    begin
+    select max(idCont) into idC from conturi;
+    idc:=idc+1;
+    return idc;
+end getNewContid;
+/
+drop procedure adaugaCont
+/
+create procedure adaugaCont(user varchar2, pass varchar2) as
+idcont number;
+begin
+    insert into conturi values(getContId(),user,pass);
+end adaugaCont;
+/
