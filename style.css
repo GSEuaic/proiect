@@ -48,7 +48,7 @@ padding-bottom: 1%;
   margin: 0 auto;
   padding:5%;
   margin-bottom: 3%;
-  text-align: center;
+  text-align: left;
   /* border-radius */
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -213,4 +213,8 @@ header div{
   background: #fff;
   margin-bottom: 1%;
   padding: 0.5%;
+}
+
+.generareRaport{
+  text-align: center;
 }

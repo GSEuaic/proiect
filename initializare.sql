@@ -79,9 +79,9 @@ insert into petitiiAprobate values(4,0,100,'petitie4',1111,'preturi mari',1,sysd
 /
 insert into petitiiAprobate values(5,0,100,'petitie5',1111,'preturi mari',1,sysdate-5)
 /
-insert into comentarii values(1,sysdate,100,1,'comaodmfoadsmf asdfoasdfoasmdo faosdkf oaskdfokasdofkoas dkf')
+insert into comentarii values(7,sysdate,100,2,'comaodmfoadsmf asdfoasdfoasmdo faosdkf oaskdfokasdofkoas dkf')
 /
-insert into comentarii values(2,sysdate,100,1,'comaodmfofaosdkf oaskdfokasdofkoas dkf')
+insert into comentarii values(2,sysdate,100,2,'comaodmfofaosdkf oaskdfokasdofkoas dkf')
 /
 insert into comentarii values(5,sysdate,100,1,'kasdofkoas dkf')
 /
@@ -127,3 +127,4 @@ idcont number;
 begin
     insert into conturi values(getNewContId(),user,pass);
 end adaugaCont;
+/

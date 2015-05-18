@@ -12,7 +12,7 @@
 </HEADER>
 <body>
 	<div class="content campGeneral camp">
-		<form acrion="generareRaport.php">
+		<form class="generareRaport" action="generareRaport.php">
 			<select class="select" name="mod"  required>  
                         <option value='html' >HTML</option>
                         <option value='csv' >CSV</option>

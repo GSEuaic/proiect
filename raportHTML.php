@@ -1,13 +1,21 @@
 <?php 
+$max = 30;
 			$conn = oci_connect("system", "sys", "localhost/XE");
 			if (!$conn) {
 				$m = oci_error();
 				trigger_error(htmlentities($m['message']), E_USER_ERROR);
 				}
 
+
+$stid = oci_parse($conn, 'SELECT count(*) FROM petitiiAprobate');
+oci_execute($stid);
+oci_fetch_row($stid);
+$cate = oci_result($stid, 1);
+echo "<p>Sunt $cate petitii inregistrate</p>";
+
 $stid = oci_parse($conn, 'SELECT * FROM petitiiAprobate');
 oci_execute($stid);
-echo "Petitii inregistrate : ";
+echo "<p><p>Petitii inregistrate : </p>";
 echo "<table border='1'>\n";
 echo "
 <tr> 
@@ -23,16 +31,39 @@ echo "
 while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
     echo "<tr>\n";
     foreach ($row as $item) {
-        echo "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
+        echo "    <td>" . (substr($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;",0,$max)) . "</td>\n";
     }
     echo "</tr>\n";
 }
-echo "</table>\n";
+echo "</table></p>";
+
+
+$stid = oci_parse($conn, 'SELECT count(*),idPetitie FROM Comentarii group by idpetitie order by count(*) desc ');
+oci_execute($stid);
+oci_fetch_row($stid);
+$cate = oci_result($stid, 1);
+$care = oci_result($stid, 2);
+$stid = oci_parse($conn, 'SELECT nume FROM petitiiAprobate where idPetitie=:id ');
+oci_bind_by_name($stid, ':id', $care);
+oci_execute($stid);
+oci_fetch_row($stid);
+$care = oci_result($stid, 1);
+echo "<p>Petitia cu cele mai multe comentarii( $cate ) este $care.</p>";
+
+
+$stid = oci_parse($conn, 'SELECT count(*) FROM Comentarii');
+oci_execute($stid);
+oci_fetch_row($stid);
+$cate = oci_result($stid, 1);
+echo "<p>Sunt $cate comentarii postate.</p>";
+
+
 
 $stid = oci_parse($conn, 'SELECT * FROM Comentarii order by idPetitie');
 oci_execute($stid);
-echo "Comentarii postate : <br>";
-echo "<table border='1'>\n";
+
+echo "<p>Comentarii postate : </p>";
+echo "<p><table border='1'>\n";
 echo "
 <tr> 
 <td>IdComentariu</td>
@@ -44,11 +75,11 @@ echo "
 while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
     echo "<tr>\n";
     foreach ($row as $item) {
-        echo "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
+        echo "    <td>" . (substr($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;",0,$max)) . "</td>\n";
     }
     echo "</tr>\n";
 }
-echo "</table>\n";
+echo "</table></p>";
 
 
 ?>
