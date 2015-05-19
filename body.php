@@ -1,23 +1,14 @@
 <div class="content campGeneral camp">
 	<?php 
+	include "functions.php";
 	$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	echo $actual_link;
 	if(strpos($actual_link,"seePetitionInfo")==false)
-		//content general
-		echo"	<p>dsfsdf</p>
-	<p>dsfsdf</p>
-	<p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p>
-	<p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p>
-	<p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p>
-	<p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p>
-	<p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p>
-	<p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p>
-	<p>dsfsdf</p><p>dsfsdf</p><p>dsfsdf</p>";
-
-		else //content pagina petitie
-		{
-
-			echo "<p>pagina petitie</p><p>pagina petitie</p><p>pagina petitie</p><p>pagina petitie</p>";
+		{//mainpage
+			echo"	<h2>Top Petitii dupa numarul de voturi</h2>";
+			getTopPetitii();
+		}
+		else 
+		{//content pagina petitie
 			$conn = oci_connect("system", "sys", "localhost/XE");
 			if (!$conn) {
 				$m = oci_error();

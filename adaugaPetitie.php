@@ -5,6 +5,7 @@
 	<title> Pet4Web Main Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 	<?php  include 'loginBar.php'; ?>
 <HEADER id="cuPadding">
@@ -15,12 +16,12 @@
 		<form action="adauga.php" method="post">
             <div class="campGeneral camp">
                 <p class="titlu"> Adauga o petitie noua</p>
-                <p >Nume,prenume*<br />
+                <p >Numele petitiei<br />
                   <input class="campMic" type="text" name="nume" value="" size="40"  required/></p>
-              <p>Email(obligatoriu)<br />
-                <input class="campMic" type="email" name="email" value=""  required/> </p>
-                <p>Descrierea problemei<br />
-                    <textarea class="campMare" type="text" name="descriere" value="" cols="40" rows="5" /></textarea></p>
+              <p>Nume autor*<br />
+                <input class="campMic" type="text" name="email" value=""  /> </p>
+                <p>Descrierea petitiei<br />
+                    <textarea class="campMare" type="text" name="descriere" value="" cols="40" rows="5" required/></textarea></p>
                     <p>Categorie:
                         <select class="select" name="categorie" id="categoriePetitie" required>  ////insert php to get categories
                         <option value='1' >Mediu inconjurator</option>
@@ -29,10 +30,12 @@
                     </select>
                 </p>
                 <p>Cui adresezi petitia?<br />
-                    <input class="campMare" type="text" name="destinatar" size="40"cols="40" rows="10"></textarea>
+                    <textarea class="campMare" type="text" name="destinatar" size="40"cols="40" rows="10"></textarea>
                 </p>
                 <p><input type="submit" value="Adauga"/></p>
+                <div class="g-recaptcha" data-sitekey="6LeMFgcTAAAAABeNjPXNNU6kFwDPo5vyNplHglSK"></div>
                 <p class="specificatiiExtra">  * Numele si prenumele sunt anonime.</p>
+            
             </div>
         </form>
 	</div>

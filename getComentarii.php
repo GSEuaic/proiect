@@ -14,6 +14,8 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
     echo'la petitia: <a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME']."</a></h2>";
     echo '<br></div>';
 }
+
+}
 oci_free_statement($stid);
 oci_close($conn);
 

@@ -11,6 +11,7 @@ $sql = 'BEGIN adaugaPetitie(:idInitiator, :nume, :destinatar, :descriere,:catego
 $stmt = oci_parse($conn,$sql);
 $init = 100;
 oci_bind_by_name($stmt,':idInitiator',$init,-1);//get cont from cookie //default anonim
+
 oci_bind_by_name($stmt,':nume',$_REQUEST['nume'],-1);
 oci_bind_by_name($stmt,':destinatar',$_REQUEST['destinatar'],-1);
 oci_bind_by_name($stmt,':descriere',$_REQUEST['descriere'],-1);

@@ -27,4 +27,5 @@ oci_bind_by_name($stmt,':dest',$dest,-1);
 oci_execute($stmt) or die("Eroare");
 oci_close($conn); 
 echo "am modificat";
+header( 'Location: /seePetitionInfo.php?idPet=$idPet' ) ;
  ?>

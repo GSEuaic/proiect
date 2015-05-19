@@ -58,4 +58,9 @@ $rezultat = oci_result($stmt, 1);
 oci_close($conn);
 return $rezultat;
 }
+function getTopPetitii(){
+echo "do it in oracle";
+
+
+} 
  ?>
