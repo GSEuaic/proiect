@@ -12,9 +12,9 @@ create table petitiiAprobate(
     idPetitie number(10) primary key,
     voturi number(10),
     idInitiator number(10) references Conturi(idCont),
-    nume varchar2(100),
-    destinatar varchar2(100),
-    descriere varchar2(500),
+    nume varchar2(200),
+    destinatar varchar2(200),
+    descriere varchar2(1000),
     categorie varchar2(100),
     dataPostare date
     )

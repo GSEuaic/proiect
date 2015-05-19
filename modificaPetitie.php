@@ -5,6 +5,7 @@
 	<title> Pet4Web Main Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <?php include "functions.php"; ?>
 </head>
 	<?php  include 'loginBar.php'; ?>
 <HEADER id="cuPadding">
@@ -12,26 +13,33 @@
 </HEADER>
 <body>
 	<div class="content campGeneral camp">
-		<form action="adauga.php" method="post">
+		<form action="modifica.php" method="post" id="FormId">
             <div class="campGeneral camp">
-                <p class="titlu"> Adauga o petitie noua</p>
-                <p >Nume,prenume*<br />
-                  <input class="campMic" type="text" name="nume" value="" size="40"  required/></p>
-              <p>Email(obligatoriu)<br />
-                <input class="campMic" type="email" name="email" value=""  required/> </p>
+                <p class="titlu"> Modifica petitia <?php echo getNume($_REQUEST['idPet']); ?></p>
+                <p >Numele petitiei : <br />
+                <input style="visibility:hidden;"  type="text" name="idulPet"
+                  <?php $s=$_REQUEST['idPet']; echo "value= \"".$s."\""; ?> 
+                  >
+                  <input class="campMic" type="text" name="nume" 
+                  <?php $s=getNume($_REQUEST['idPet']); echo "value= \"".$s."\""; ?>
+                   size="40"  required/></p>
                 <p>Descrierea problemei<br />
-                    <textarea class="campMare" type="text" name="descriere" value="" cols="40" rows="5" /></textarea></p>
+                    <input class="campMare" type="text" name="descriere" 
+                    <?php $s=getDescriere($_REQUEST['idPet']); echo "value= \"".$s."\""; ?> 
+                    size="40"  /></p>
                     <p>Categorie:
-                        <select class="select" name="categorie" id="categoriePetitie" required>  ////insert php to get categories
+                        <select class="select" name="categorie" id="categoriePetitie" required>
                         <option value='1' >Mediu inconjurator</option>
                         <option value='2' >TV</option>
                         <option value='3' >etc</option>
                     </select>
                 </p>
                 <p>Cui adresezi petitia?<br />
-                    <input class="campMare" type="text" name="destinatar" size="40"cols="40" rows="10"></textarea>
+                    <input class="campMare" type="text" name="destinatar" size="40"cols="40" rows="10"
+                    <?php $s=getDestinatar($_REQUEST['idPet']); echo "value= \"".$s."\""; ?>
+                    >
                 </p>
-                <p><input type="submit" value="Adauga"/></p>
+                <p><input type="submit" value="Modifica"/></p>
                 <p class="specificatiiExtra">  * Numele si prenumele sunt anonime.</p>
             </div>
         </form>
