@@ -128,3 +128,163 @@ begin
     insert into conturi values(getNewContId(),user,pass);
 end adaugaCont;
 /
+
+create or replace directory myCSV as 'c:\proiect'
+/
+grant read,write on directory myCSV to sys
+/
+drop procedure makecsv
+/
+create procedure makeCSV as
+/
+declare
+cursor cursorConturi is select * from conturi;
+cursor cursorPetitii is select * from petitiiAprobate;
+cursor cursorComentarii is select * from Comentarii;
+cursor cursorCategorii is select * from categorii;
+cate number;
+v_file UTL_FILE.FILE_TYPE;
+BEGIN
+  v_file:= UTL_FILE.FOPEN ('MYCSV', 'backup2.csv', 'w');
+  select count(*) into cate from conturi;
+  UTL_FILE.PUT_LINE(v_file,cate);                      
+      --UTL_FILE.NEW_LINE (v_file);  
+  for i in cursorConturi loop
+      UTL_FILE.PUT_LINE(v_file,i.idCont||','||i.username||','||i.password);                      
+      --UTL_FILE.NEW_LINE (v_file);
+  end loop;
+  select count(*) into cate from petitiiAprobate;
+  UTL_FILE.PUT_LINE(v_file,cate);                      
+  --UTL_FILE.NEW_LINE (v_file);  
+  for i in cursorPetitii loop
+      UTL_FILE.PUT_LINE(v_file,i.idPetitie||','||i.voturi||','||i.idInitiator||','
+                        ||i.nume||','||i.destinatar||','||i.descriere||','||
+                        i.categorie||','||i.dataPostare);                      
+      --UTL_FILE.NEW_LINE (v_file);  
+  end loop;
+  select count(*) into cate from Comentarii;
+  UTL_FILE.PUT_LINE(v_file,cate);                      
+  --UTL_FILE.NEW_LINE (v_file);  
+  for i in cursorComentarii loop
+      UTL_FILE.PUT_LINE(v_file,i.idComentariu||','||i.dataPostarii||','||i.idCont||','
+                        ||i.idPetitie||','||i.textComentariu);                      
+      --UTL_FILE.NEW_LINE (v_file);  
+  end loop;
+  select count(*) into cate from categorii;
+  UTL_FILE.PUT_LINE(v_file,cate);                      
+  --UTL_FILE.NEW_LINE (v_file);  
+  for i in cursorCategorii loop
+      UTL_FILE.PUT_LINE(v_file,i.idCategorie||','||i.nume);                      
+      --UTL_FILE.NEW_LINE (v_file);  
+  end loop;
+  UTL_FILE.FCLOSE (v_file);
+EXCEPTION
+WHEN UTL_FILE.INVALID_FILEHANDLE THEN 
+RAISE_APPLICATION_ERROR(-20001,'Invalid File.');
+WHEN UTL_FILE.WRITE_ERROR THEN --8
+RAISE_APPLICATION_ERROR (-20002, 'Unable to write to file');
+END;
+/
+drop procedure readCSV
+/
+create procedure readCSV as
+    Fi UTL_FILE.FILE_TYPE;
+    V_Line varchar2(2000);
+    text1 VARCHAR2(1000);
+    text2 varchar2(1000);
+    text3 VARCHAR2(1000);
+    text4 VARCHAR2(1000);
+    number1 number;
+    number2 number;
+    number3 number;
+    data1 date;
+    cate number :=0;
+    linie number :=0;
+  BEGIN
+    Fi := UTL_FILE.FOPEN ('MYCSV', 'backup2.csv', 'r');
+    IF UTL_FILE.IS_OPEN(Fi) THEN
+    --incepe citirea
+    UTL_FILE.GET_LINE(Fi, V_LINE, 2000);
+    --linie:=linie+1;
+    dbms_output.put_line(v_line);
+    cate:=to_number(V_LINE);
+      for i in 1..cate loop
+        BEGIN
+          UTL_FILE.GET_LINE(Fi, V_LINE, 2000);
+          IF V_LINE IS NULL THEN
+            EXIT;
+          END IF;
+          number1 := to_number(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 1));
+          text1:=REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 2);
+          text2:=REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 3);
+          DBMS_OUTPUT.PUT_LINE('insert into Conturi values('||number1||','||text1||','||text2||')');
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          EXIT;
+        END;
+      END LOOP;
+      ---gata conturi
+      UTL_FILE.GET_LINE(Fi, V_LINE, 2000);
+      cate:=to_number(V_LINE);
+      for i in 1..cate loop
+        BEGIN
+          UTL_FILE.GET_LINE(Fi, V_LINE, 2000);
+          IF V_LINE IS NULL THEN
+            EXIT;
+          END IF;
+          number1 := to_number(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 1));
+          number2 := to_number(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 2));
+          number3 := to_number(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 3));
+          text1:=REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 4);
+          text2:=REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 5);
+          text3:=REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 6);
+          text4:=REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 7);
+          data1 :=to_date(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 8));
+          DBMS_OUTPUT.PUT_LINE('insert into pettii values('||number1||','||number2||','||number3||')'||data1);
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          EXIT;
+        END;
+      END LOOP;
+      ----gata petitiile
+      UTL_FILE.GET_LINE(Fi, V_LINE, 2000);
+      cate:=to_number(V_LINE);
+      for i in 1..cate loop
+        BEGIN
+          UTL_FILE.GET_LINE(Fi, V_LINE, 2000);
+          IF V_LINE IS NULL THEN
+            EXIT;
+          END IF;
+          number1 := to_number(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 1));
+          data1 := to_date(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 2));
+          number2 := to_number(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 3));
+          number3:=to_number(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 4));
+          text1:=REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 5);
+          DBMS_OUTPUT.PUT_LINE('insert into pettii comentarii('||number1||','||data1||','||number2||','||number3);
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          EXIT;
+        END;
+      END LOOP;
+      --gata comentariile
+      UTL_FILE.GET_LINE(Fi, V_LINE, 2000);
+      cate:=to_number(V_LINE);
+      for i in 1..cate loop
+        BEGIN
+          UTL_FILE.GET_LINE(Fi, V_LINE, 2000);
+          IF V_LINE IS NULL THEN
+            EXIT;
+          END IF;
+          number1 := to_number(REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 1));
+          text1 := REGEXP_SUBSTR(V_LINE, '[^,]+', 1, 2);
+          DBMS_OUTPUT.PUT_LINE('insert into pettii comentarii('||number1||','||text1||')');
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          EXIT;
+        END;
+      END LOOP;
+      --gata categoriile
+      --gata citirea
+    END IF;
+    UTL_FILE.FCLOSE(Fi);
+  END;
