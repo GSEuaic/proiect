@@ -1,6 +1,6 @@
 <?php
 
-$c = oci_connect("system", "sys", "localhost/XE");
+$c = oci_connect("george", "george", "localhost/XE");
 
 $sqlName="initializare.sql";
 
@@ -10,8 +10,9 @@ $continut = fread($myfile,filesize($sqlName));
 $instructiuni = explode("/", $continut);
 foreach ($instructiuni as $instructiune) {
 	echo $instructiune;
-	
-	# code...
+		//$instructiune = str_replace(chr(13),'',$instructiune);
+		//$instructiune = str_replace(chr(10),'',$instructiune);
+	//echo "<br>".$instructiune;
 	$s = oci_parse($c, $instructiune);
 	$r = oci_execute($s);
 	echo "<br><br>";

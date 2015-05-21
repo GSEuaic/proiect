@@ -10,7 +10,7 @@ print "<h2>Numele petitiei:</h2><br> $numePetitie<br> <h2>Descrierea petitiei: <
 	</p>
 	<p> <h2>Comentarii:</h2></p>
 <?php
-$conn = oci_connect("system", "sys", "localhost/XE");
+$conn = oci_connect("george", "george", "localhost/XE");
 if (!$conn) {
     $m = oci_error();
     trigger_error(htmlentities($m['message']), E_USER_ERROR);

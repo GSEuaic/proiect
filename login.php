@@ -2,7 +2,7 @@
 if(!isset($_REQUEST['loginUser']) || !isset($_REQUEST['loginPass']) )
 	echo "Nu ati introdus parola sau Usenameul.";
 else {//check for password
-	$conn = oci_connect("system", "sys", "localhost/XE");
+	$conn = oci_connect("george", "george", "localhost/XE");
 			if (!$conn) {
 				$m = oci_error();
 				trigger_error(htmlentities($m['message']), E_USER_ERROR);

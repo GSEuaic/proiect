@@ -293,9 +293,3 @@ begin
 csv_util.readcsv;
 end;
 /
-begin
---csv_util.makecsv;
-csv_util.readcsv;
-end;
-/
---SELECT * FROM ALL_OBJECTS WHERE OBJECT_TYPE IN ('PROCEDURE') order by object_type
