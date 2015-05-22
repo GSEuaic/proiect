@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
 </head>
-	<?php  include 'loginBar.php'; ?>
+<?php  include 'loginBar.php'; ?>
 <HEADER id="cuPadding">
 	<?php include 'header.php'; ?>
 </HEADER>
@@ -14,27 +14,29 @@
 	<div class="content campGeneral camp">
 		<form class="generareRaport" action="generareRaport.php">
 			<select class="select" name="mod"  required>  
-                        <option value='html' >HTML</option>
-                        <option value='csv' >CSV</option>
-                        <option value='pdf' >PDF</option>
-                    </select>
-                    <p><input type="submit" value="Generare"/></p>
+				<option value='html' >HTML</option>
+				<option value='csv' >CSV</option>
+				<option value='pdf' >PDF</option>
+			</select>
+			<p><input type="submit" value="Generare"/></p>
 		</form>
 
 		<?php 
 		if(isset($_REQUEST['mod']))
-		if($_REQUEST['mod']=='html')
-		include "raportHTML.php" 
-	?>
-	</div>
-<div class="sidebar">
+			if($_REQUEST['mod']=='html')
+				include "raportHTML.php"; 
+			elseif($_REQUEST['mod']=='csv')
+				include "raportCSV.php"; 
+			?>
+		</div>
+		<div class="sidebar">
 
-<div class="campGeneral ultimelePetitii">
-<?php include 'ultimelepetitii.php';?>
-</div>
-<div class="campGeneral ultimeleComentarii">
-<?php include 'ultimeleComentarii.php'; ?>
-</div>
-</div>
-</body>
-</html>
+			<div class="campGeneral ultimelePetitii">
+				<?php include 'ultimelepetitii.php';?>
+			</div>
+			<div class="campGeneral ultimeleComentarii">
+				<?php include 'ultimeleComentarii.php'; ?>
+			</div>
+		</div>
+	</body>
+	</html>

@@ -218,3 +218,7 @@ header div{
 .generareRaport{
   text-align: center;
 }
+
+#dreapta{
+  float:right;
+}

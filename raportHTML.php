@@ -1,10 +1,10 @@
 <?php 
 $max = 30;
-			$conn = oci_connect("george", "george", "localhost/XE");
-			if (!$conn) {
-				$m = oci_error();
-				trigger_error(htmlentities($m['message']), E_USER_ERROR);
-				}
+$conn = oci_connect("george", "george", "localhost/XE");
+if (!$conn) {
+    $m = oci_error();
+    trigger_error(htmlentities($m['message']), E_USER_ERROR);
+}
 
 
 $stid = oci_parse($conn, 'SELECT count(*) FROM petitiiAprobate');

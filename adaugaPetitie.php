@@ -5,7 +5,6 @@
 	<title> Pet4Web Main Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 	<?php  include 'loginBar.php'; ?>
 <HEADER id="cuPadding">
@@ -33,7 +32,6 @@
                     <textarea class="campMare" type="text" name="destinatar" size="40"cols="40" rows="10"></textarea>
                 </p>
                 <p><input type="submit" value="Adauga"/></p>
-                <div class="g-recaptcha" data-sitekey="6LeMFgcTAAAAABeNjPXNNU6kFwDPo5vyNplHglSK"></div>
                 <p class="specificatiiExtra">  * Numele si prenumele sunt anonime.</p>
             
             </div>
