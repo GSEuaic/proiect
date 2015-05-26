@@ -13,6 +13,7 @@
 			<input id="campLogin" type="text" class="campMic"  name="cauta">
 			<input type="submit" value="Cauta petitie"/>
 			<a href="/adaugaPetitie.php">Adauga Petitie</a>
+			<a href="/up.php">Upload.zip</a>
 			<a href="/generareRaport.php"> Generare raport</a>
 		</form>
 	</nav>

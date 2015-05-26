@@ -58,9 +58,7 @@ function getDestinatar($idPet){
 	oci_close($conn);
 	return $rezultat;
 }
-function getTopPetitii(){
-	echo "do it in oracle";
-}
+
 function getContentPaginaPetitie($id){
 	$conn = oci_connect("george", "george", "localhost/XE");
 	if (!$conn) {
@@ -177,4 +175,23 @@ function getComentarii($id,$p){
 
 	}
 
+function getTopPetitii(){
+	$conn = oci_connect("george", "george", "localhost/XE");
+	if (!$conn) {
+    $m = oci_error();
+    trigger_error(htmlentities($m['message']), E_USER_ERROR);
+	}
+
+	$sql = ' select * from(select * from petitiiAprobate order by voturi desc) where rownum<5';
+	$stid = oci_parse($conn, $sql);
+	oci_execute($stid);
+	$ab=1;
+	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
+	    echo '<div class="campSidebarz "><h2>'.$ab.'.'.$row['NUME'].' cu  '.$row['VOTURI'].' voturi<br></h2>';
+	    $ab=$ab+1;
+	    echo '</div>';
+	}
+	oci_free_statement($stid);
+	oci_close($conn);
+}
 	?>

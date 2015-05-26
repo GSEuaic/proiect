@@ -16,7 +16,7 @@
 		}
 		else
 		{//mainpage
-			echo"	<h2>Top Petitii dupa numarul de voturi</h2>";
+			echo"	<h2>Top 5 Petitii</h2>";
 			getTopPetitii();
 		} 
 	 ?>

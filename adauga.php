@@ -25,4 +25,6 @@ print "Petitia a fost adaugata";
 
 oci_close($conn);
 
+header('Location: /index.php');
+exit;
 ?>

@@ -1,4 +1,4 @@
-<p> <h2>Ultimele comentarii:</h2></p>
+<p> <h2>Adauga comentarii:</h2></p>
 <?php
 $conn = oci_connect("george", "george", "localhost/XE");
 if (!$conn) {

@@ -1,4 +1,3 @@
-<p> <h2>Ultimele comentarii:</h2></p>
 <?php
 $conn = oci_connect("george", "george", "localhost/XE");
 if (!$conn) {
@@ -6,8 +5,7 @@ if (!$conn) {
     trigger_error(htmlentities($m['message']), E_USER_ERROR);
 }
 
-$sql = ' select * from (SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
-FROM Comentarii c join petitiiAprobate p on c.idPetitie=p.idPetitie join Conturi j on j.idCont=c.idCont order by c.idcomentariu desc) where rownum<4';
+$sql = ' select * from petitiiAprobate order by voturi desc';
 $stid = oci_parse($conn, $sql);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
