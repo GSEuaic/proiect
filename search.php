@@ -8,9 +8,10 @@ if(isset($_REQUEST['cauta'])){
 
 	$cauta = $_REQUEST['cauta'];
 
-	$sql = "select * from petitiiAprobate where nume like '%$cauta%'";
-	//echo $sql;
+	$sql = "select * from petitii where lower(nume) like lower('%:cauta%')";
+	echo '<p>'.$sql.'</p>';
 	$stmt = oci_parse($conn,$sql);
+	oci_bind_by_name($stmt, ':cauta', $cauta);
 	oci_execute($stmt);
 	$x=0;
 	echo "<table border='1'>\n";

@@ -8,7 +8,7 @@ if (!$conn) {
     trigger_error(htmlentities($m['message']), E_USER_ERROR);
 }
 
-$sql = 'select * from (SELECT * FROM petitiiAprobate order by dataPostare desc )where rownum<4';
+$sql = 'select * from (SELECT * FROM petitii order by dataPostare desc )where rownum<4';
 $stid = oci_parse($conn, $sql);
 # $didbv = 60;
 # oci_bind_by_name($stid, ':didbv', $didbv);

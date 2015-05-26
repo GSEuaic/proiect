@@ -13,15 +13,15 @@ insert into categorii values(5,'nedreptati generale')
 /
 insert into conturi values(100,'usertest','pass')
 /
-insert into petitiiaprobate values(1,0,100,'petitie1',1111,'preturi mari',1,sysdate)
+insert into petitii values(1,0,100,'petitie1',1111,'preturi mari',1,sysdate)
 /
-insert into petitiiaprobate values(2,0,100,'petitie2',1111,'preturi mari',1,sysdate-2)
+insert into petitii values(2,0,100,'petitie2',1111,'preturi mari',1,sysdate-2)
 /
-insert into petitiiaprobate values(3,0,100,'petitie3',1111,'preturi mari',1,sysdate-3)
+insert into petitii values(3,0,100,'petitie3',1111,'preturi mari',1,sysdate-3)
 /
-insert into petitiiaprobate values(4,0,100,'petitie4',1111,'preturi mari',1,sysdate-4)
+insert into petitii values(4,0,100,'petitie4',1111,'preturi mari',1,sysdate-4)
 /
-insert into petitiiaprobate values(5,0,100,'petitie5',1111,'preturi mari',1,sysdate-5)
+insert into petitii values(5,0,100,'petitie5',1111,'preturi mari',1,sysdate-5)
 /
 insert into comentarii(datapostarii,idcont,idpetitie,textcomentariu ) 
   values(sysdate,100,2,'1comaodmfoadsmf asdfoasdfoasmdo faosdkf oaskdfokasdofkoas dkf')
@@ -39,13 +39,14 @@ insert into comentarii(datapostarii,idcont,idpetitie,textcomentariu )
   values(sysdate,100,2,'tex1')
 /
 begin
-for i in 1..20000 loop
+for i in 1..500000 loop
   insert into comentarii(datapostarii,idcont,idpetitie,textcomentariu ) 
     values(sysdate,100,2,'text'||i);
-  
 end loop;
 end;
 /
 set serveroutput on;
+/
+select * from petitii
 /
 select count(*) from comentarii

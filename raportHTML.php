@@ -7,13 +7,13 @@ if (!$conn) {
 }
 
 
-$stid = oci_parse($conn, 'SELECT count(*) FROM petitiiAprobate');
+$stid = oci_parse($conn, 'SELECT count(*) FROM petitii');
 oci_execute($stid);
 oci_fetch_row($stid);
 $cate = oci_result($stid, 1);
 echo "<p>Sunt $cate petitii inregistrate</p>";
 
-$stid = oci_parse($conn, 'SELECT * FROM petitiiAprobate');
+$stid = oci_parse($conn, 'SELECT * FROM petitii');
 oci_execute($stid);
 echo "<p><p>Petitii inregistrate : </p>";
 echo "<table border='1'>\n";
@@ -43,7 +43,7 @@ oci_execute($stid);
 oci_fetch_row($stid);
 $cate = oci_result($stid, 1);
 $care = oci_result($stid, 2);
-$stid = oci_parse($conn, 'SELECT nume FROM petitiiAprobate where idPetitie=:id ');
+$stid = oci_parse($conn, 'SELECT nume FROM petitii where idPetitie=:id ');
 oci_bind_by_name($stid, ':id', $care);
 oci_execute($stid);
 oci_fetch_row($stid);
@@ -57,8 +57,7 @@ oci_fetch_row($stid);
 $cate = oci_result($stid, 1);
 echo "<p>Sunt $cate comentarii postate.</p>";
 
-
-
+/*
 $stid = oci_parse($conn, 'SELECT * FROM Comentarii order by idPetitie');
 oci_execute($stid);
 
@@ -80,6 +79,6 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
     echo "</tr>\n";
 }
 echo "</table></p>";
-
+*/
 
 ?>

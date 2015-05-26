@@ -6,9 +6,9 @@ create table conturi(
   password varchar2(100)
   )   
 /
-drop table petitiiaprobate cascade constraints
+drop table petitii cascade constraints
 /
-create table petitiiaprobate(
+create table petitii(
   idpetitie number(10) primary key,
   voturi number(10),
   idinitiator number(10) references conturi(idcont),
@@ -36,7 +36,7 @@ create table comentarii(
   idcomentariu number(10) primary key,
   datapostarii date,
   idcont number(10) references conturi(idcont),
-  idpetitie number(10) references petitiiaprobate(idpetitie),
+  idpetitie number(10) references petitii(idpetitie),
   textcomentariu varchar2(300)
   )
 /
@@ -44,7 +44,7 @@ drop table voturi cascade constraints
 /
 create table voturi(
   idcont  number(10) ,
-  petitievotata number(10) references petitiiaprobate(idpetitie),
+  petitievotata number(10) references petitii(idpetitie),
   ip varchar(50)
   )
 /
@@ -69,15 +69,15 @@ insert into categorii values(1,'mediu inconjurator')
             /
             insert into conturi values(100,'usertest','pass')
               /
-              insert into petitiiaprobate values(1,0,100,'petitie1',1111,'preturi mari',1,sysdate)
+              insert into petitii values(1,0,100,'petitie1',1111,'preturi mari',1,sysdate)
                 /
-                insert into petitiiaprobate values(2,0,100,'petitie2',1111,'preturi mari',1,sysdate-2)
+                insert into petitii values(2,0,100,'petitie2',1111,'preturi mari',1,sysdate-2)
                   /
-                  insert into petitiiaprobate values(3,0,100,'petitie3',1111,'preturi mari',1,sysdate-3)
+                  insert into petitii values(3,0,100,'petitie3',1111,'preturi mari',1,sysdate-3)
                     /
-                    insert into petitiiaprobate values(4,0,100,'petitie4',1111,'preturi mari',1,sysdate-4)
+                    insert into petitii values(4,0,100,'petitie4',1111,'preturi mari',1,sysdate-4)
                       /
-                      insert into petitiiaprobate values(5,0,100,'petitie5',1111,'preturi mari',1,sysdate-5)
+                      insert into petitii values(5,0,100,'petitie5',1111,'preturi mari',1,sysdate-5)
                         /
                         insert into comentarii values(7,sysdate,100,2,'comaodmfoadsmf asdfoasdfoasmdo faosdkf oaskdfokasdofkoas dkf')
                           /
@@ -89,7 +89,7 @@ insert into categorii values(1,'mediu inconjurator')
                               /
                               create procedure getname(id_pet number, numepet out varchar2, descpet out varchar2) as
                                 begin
-                                select descriere,nume into descpet,numepet from petitiiaprobate where idpetitie=id_pet; 
+                                select descriere,nume into descpet,numepet from petitii where idpetitie=id_pet; 
                                 end getname;
                                 /
                                 drop function getnoofpetitions
@@ -97,7 +97,7 @@ insert into categorii values(1,'mediu inconjurator')
                                 create function getnoofpetitions return number is
                                   nr number;
                                   begin
-                                  select max(idpetitie)+1 into nr from petitiiaprobate;
+                                  select max(idpetitie)+1 into nr from petitii;
                                   return nr;
                                   end getnoofpetitions;
                                   /
@@ -106,7 +106,7 @@ insert into categorii values(1,'mediu inconjurator')
                                   create procedure adaugapetitie(idinitiator number,nume varchar2,destinatar varchar2,descriere varchar2,categorie varchar2)
                                     is
                                     begin
-                                    insert into petitiiaprobate values(getnoofpetitions()+1,0,idinitiator,nume,destinatar,descriere,categorie,sysdate);
+                                    insert into petitii values(getnoofpetitions()+1,0,idinitiator,nume,destinatar,descriere,categorie,sysdate);
                                       end adaugapetitie;
                                       /
                                       drop function getnewcontid
@@ -140,7 +140,7 @@ insert into categorii values(1,'mediu inconjurator')
                                                 /
                                                 CREATE OR REPLACE PACKAGE BODY CSV_UTIL AS PROCEDURE MAKECSV IS
                                                 CURSOR CURSORCONTURI IS SELECT * FROM CONTURI;
-                                                CURSOR CURSORPETITII IS SELECT * FROM PETITIIAPROBATE;
+                                                CURSOR CURSORPETITII IS SELECT * FROM petitii;
                                                 CURSOR CURSORCOMENTARII IS SELECT * FROM COMENTARII;
                                                 CURSOR CURSORCATEGORII IS SELECT * FROM CATEGORII;
                                                 CATE NUMBER;
@@ -154,7 +154,7 @@ insert into categorii values(1,'mediu inconjurator')
       UTL_FILE.PUT_LINE(V_FILE,I.IDCONT||','||I.USERNAME||','||I.PASSWORD);                      
       --UTL_FILE.NEW_LINE (V_FILE);
       END LOOP;
-      SELECT COUNT(*) INTO CATE FROM PETITIIAPROBATE;
+      SELECT COUNT(*) INTO CATE FROM petitii;
       UTL_FILE.PUT_LINE(V_FILE,CATE);                      
   --UTL_FILE.NEW_LINE (V_FILE);  
   FOR I IN CURSORPETITII LOOP

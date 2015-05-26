@@ -11,7 +11,7 @@ $cat=$_REQUEST['categorie'];
 $dest=$_REQUEST['destinatar'];
 echo $idPet;
 
-$sql = 'update petitiiAprobate 
+$sql = 'update petitii 
 		set descriere=:descr,
 		nume=:nume,
 		categorie=:categ,

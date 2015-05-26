@@ -7,7 +7,7 @@ function getDescriere($idPet){
 		trigger_error(htmlentities($m['message']), E_USER_ERROR);
 	}
 
-	$sql = 'select descriere from petitiiAprobate where idPetitie=:idp';
+	$sql = 'select descriere from petitii where idPetitie=:idp';
 
 	$stmt = oci_parse($conn,$sql);
 	oci_bind_by_name($stmt,':idp',$idPet,-1);
@@ -27,7 +27,7 @@ function getNume($idPet){
 		trigger_error(htmlentities($m['message']), E_USER_ERROR);
 	}
 
-	$sql = 'select nume from petitiiAprobate where idPetitie=:idp';
+	$sql = 'select nume from petitii where idPetitie=:idp';
 
 	$stmt = oci_parse($conn,$sql);
 	oci_bind_by_name($stmt,':idp',$idPet,-1);
@@ -47,7 +47,7 @@ function getDestinatar($idPet){
 		trigger_error(htmlentities($m['message']), E_USER_ERROR);
 	}
 
-	$sql = 'select destinatar from petitiiAprobate where idPetitie=:idp';
+	$sql = 'select destinatar from petitii where idPetitie=:idp';
 
 	$stmt = oci_parse($conn,$sql);
 	oci_bind_by_name($stmt,':idp',$idPet,-1);
@@ -67,7 +67,7 @@ function getContentPaginaPetitie($id){
 	}
 	
 	echo 'ddddddd';
-	$sql = 'SELECT * FROM petitiiAprobate where idPetitie=:id';
+	$sql = 'SELECT * FROM petitii where idPetitie=:id';
 	$stid = oci_parse($conn, $sql);
 	oci_bind_by_name($stid, ':id', $id );
 	oci_execute($stid);
@@ -89,7 +89,7 @@ function searchPet($str)
 
 	$cauta = $str;
 	if($cauta){
-		$sql = "select * from petitiiAprobate where nume like '%$cauta%'";
+		$sql = "select * from petitii where nume like '%$cauta%'";
 		$stmt = oci_parse($conn,$sql);
 		oci_execute($stmt);
 		$x=0;
@@ -109,7 +109,9 @@ function searchPet($str)
 
 	oci_close($conn);
 }	function incarca(){
-		$conn = oci_connect("george", "george", "localhost/XE");
+		//include 'initializare.php';//sterge si reface structura tabelelor
+
+		$php = oci_connect("george", "george", "localhost/XE");
 		if (!$conn) {
 			$m = oci_error();
 			trigger_error(htmlentities($m['message']), E_USER_ERROR);
@@ -133,7 +135,7 @@ function getComentarii($id,$p){
 
 	$sql = 'select * from(
 	SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
-	FROM Comentarii c join petitiiAprobate p on c.idPetitie=p.idPetitie 
+	FROM Comentarii c join petitii p on c.idPetitie=p.idPetitie 
 	join Conturi j on j.idCont=c.idCont 
 	where c.idPetitie=:iddd and rownum<:panala order by c.idComentariu desc) 
 	where rownum <4 
@@ -145,15 +147,15 @@ function getComentarii($id,$p){
 	oci_execute($stid);
 	$done=0;
 	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-		$done=1;
+		$done=1;	
 		echo '<div class="campSidebar "><h2>'.$row['USERNAME'].'  a comentat: <br>'.substr($row['TEXTCOMENTARIU'],0,50).'...</h2>';
 		echo '<br></div>';
 	}
-	if(!$done){
+	if($done==0){
 		echo "<p>Nu sunt comentarii</p>";}
 	else{
-		if($p!=0) 
-		{	echo '<a href="seePetitionInfo.php?idPet='.$id.'&&pagina=0"> FIRST </a> ... ';
+		if($p!=1) 
+		{	echo '<a href="seePetitionInfo.php?idPet='.$id.'"> FIRST </a> ... ';
 				echo '<a href="seePetitionInfo.php?idPet='.$id.'&&pagina='.($p-1).'"> previous </a> ... ';
 		}
 		$sql = 'select count(*) from comentarii where idpetitie=:iddd';
@@ -182,7 +184,7 @@ function getTopPetitii(){
     trigger_error(htmlentities($m['message']), E_USER_ERROR);
 	}
 
-	$sql = ' select * from(select * from petitiiAprobate order by voturi desc) where rownum<5';
+	$sql = ' select * from(select * from petitii order by voturi desc) where rownum<6';
 	$stid = oci_parse($conn, $sql);
 	oci_execute($stid);
 	$ab=1;

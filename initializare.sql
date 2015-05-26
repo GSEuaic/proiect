@@ -6,9 +6,9 @@ create table conturi(
     password varchar2(100)
     )   
 /
-drop table petitiiaprobate cascade constraints
+drop table petitii cascade constraints
 /
-create table petitiiaprobate(
+create table petitii(
     idpetitie number(10) primary key,
     voturi number(10),
     idinitiator number(10) references conturi(idcont),
@@ -27,7 +27,7 @@ create table comentarii(
     idcomentariu number(10) primary key,
     datapostarii date,
     idcont number(10) references conturi(idcont),
-    idpetitie number(10) references petitiiaprobate(idpetitie),
+    idpetitie number(10) references petitii(idpetitie),
     textcomentariu varchar2(300)
     )
 /
@@ -35,7 +35,7 @@ drop table voturi cascade constraints
 /
 create table voturi(
     idcont  number(10) ,
-    petitievotata number(10) references petitiiaprobate(idpetitie),
+    petitievotata number(10) references petitii(idpetitie),
     ip varchar(50)
     )
 /
@@ -50,7 +50,7 @@ drop  procedure getname
 /
 create procedure getname(id_pet number, numepet out varchar2, descpet out varchar2) as
     begin
-    select descriere,nume into descpet,numepet from petitiiaprobate where idpetitie=id_pet; 
+    select descriere,nume into descpet,numepet from petitii where idpetitie=id_pet; 
 end getname;
 /
 drop function getnoofpetitions
@@ -58,16 +58,16 @@ drop function getnoofpetitions
 create function getnoofpetitions return number is
 nr number;
 begin
-    select max(idpetitie)+1 into nr from petitiiaprobate;
+    select max(idpetitie)+1 into nr from petitii;
     return nr;
 end getnoofpetitions;
 /
 drop procedure adaugapetitie
 /
-create procedure adaugapetitie(idinitiator number,nume varchar2,destinatar varchar2,descriere varchar2,categorie varchar2)
+create procedure adaugapetitie(idinitiator_p number,nume_p varchar2,destinatar_p varchar2,descriere_p varchar2,categorie_p varchar2)
 is
 begin
-    insert into petitiiaprobate(idinitiator,nume ,destinatar,descriere,categorie) values(idinitiator,nume,destinatar,descriere,categorie);
+    insert into petitii(idinitiator,nume ,destinatar,descriere,categorie) values(idinitiator_p,nume_p,destinatar_p,descriere_p,categorie_p);
 end adaugapetitie;
 /
 drop function getnewcontid
@@ -100,14 +100,15 @@ BEGIN
 END;
 /
 create or replace trigger incrementPetitii
-before insert on petitiiAprobate
+before insert on petitii
 for each row
 declare
 cate number(10);
 begin
 :new.dataPostare:=sysdate;
 :new.voturi:=0;
-select count(*) into cate from petitiiAprobate;
+select count(*) into cate from petitii;
 :new.idPetitie:=cate+1;
 end;
 /
+select * from petitii where lower(nume) like lower('%kav%')

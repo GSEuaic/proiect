@@ -25,7 +25,7 @@ IS
 
 CURSOR cursorpetitii IS 
   SELECT * 
-  FROM   petitiiaprobate; 
+  FROM   petitii; 
 
 CURSOR cursorcomentarii IS 
   SELECT * 
@@ -158,7 +158,7 @@ BEGIN
         text4:=csv_util.getNext(v_line);  
         data1:=csv_util.getNext(v_line);  
         dbms_output.put_line('INSERT INTO PETTII VALUES(' ||number1 ||'","' ||number2 ||'","' ||number3 ||'","'||text1 ||'","' ||data1||');'); 
-        insert into petitiiAprobate values(number1,number2,number3,text1,text2,text3,text4,data1);
+        insert into petitii values(number1,number2,number3,text1,text2,text3,text4,data1);
       EXCEPTION 
       WHEN no_data_found THEN 
         EXIT; 
@@ -182,6 +182,7 @@ BEGIN
         number3:=to_number(csv_util.getNext(v_line)); 
         text1:=csv_util.getNext(v_line); 
         dbms_output.put_line('INSERT INTO COMENTARII(' ||number1 ||',' ||data1 ||',' ||number2 ||',' ||number3); 
+        insert into comentarii values(number1,data1,number2,number3,text1);
       EXCEPTION 
       WHEN no_data_found THEN 
         EXIT; 
@@ -202,6 +203,7 @@ BEGIN
         number1 := to_number(csv_util.getNext(v_line)); 
         text1 := csv_util.getNext(v_line); 
         dbms_output.put_line('INSERT INTO CATEGORII(' ||number1 ||',' ||text1 ||')'); 
+        insert into categorii values(number1,text1);
       EXCEPTION 
       WHEN no_data_found THEN 
         EXIT; 
@@ -255,7 +257,7 @@ FUNCTION getNext(linie IN OUT VARCHAR2)
   v_NUMRows INTEGER; 
   begin
   v_CursorID:= DBMS_SQL.OPEN_CURSOR;
-  v_String :='drop table petitiiAprobate cascade constraints';
+  v_String :='drop table petitii cascade constraints';
   DBMS_SQL.PARSE(v_CursorID,v_String,DBMS_SQL.V7);
   v_NumRows := DBMS_SQL.EXECUTE(v_CursorID);
   v_String :='drop table Comentarii cascade constraints';
@@ -272,9 +274,11 @@ FUNCTION getNext(linie IN OUT VARCHAR2)
   
   END csv_util; 
   /
+/*
   begin
   csv_util.readcsv;end;
   /
   truncate table categorii;
   truncate table comentarii;
   truncate table conturi;
+  */

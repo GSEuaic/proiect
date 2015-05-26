@@ -22,8 +22,8 @@ create table Conturi(
 */
 insert into conturi values(100,'userSpam','haha')
 /*
-drop table petitiiAprobate;
-create table petitiiAprobate(
+drop table petitii;
+create table petitii(
     idPetitie number(10) primary key,
     voturi number(10),
     idInitiator number(10) references Conturi(idCont),
@@ -43,11 +43,11 @@ create table petitiiNeaprobate(
     )
 /
 /
-insert into petitiiAprobate values(10,0,100,'nume',3,'descriere',1)
+insert into petitii values(10,0,100,'nume',3,'descriere',1)
 /
-insert into petitiiAprobate(idPetitie,voturi,idInitiator,nume,destinatar,descriere) values ($nume,$email,$descriere,$destinatar);
+insert into petitii(idPetitie,voturi,idInitiator,nume,destinatar,descriere) values ($nume,$email,$descriere,$destinatar);
 /
---select * from petitiiaprobate;
+--select * from petitii;
 
 /
 
@@ -56,13 +56,13 @@ create table Comentarii(
     idComentariu number(10) primary key,
     dataPostarii date,
     idCont number(10) references Conturi(IdCont),
-    idPetitie number(10) references petitiiAprobate(idPetitie),
+    idPetitie number(10) references petitii(idPetitie),
     text varchar2(300)
     )
 /
 create table voturi(
     idCont  number(10) ,
-    petitieVotata number(10) references PetitiiAprobate(idPetitie),
+    petitieVotata number(10) references petitii(idPetitie),
     ip varchar(50)
     );
     /
@@ -92,12 +92,12 @@ create table voturi(
     
     */
     
-    select * from petitiiAprobate;
+    select * from petitii;
     /
 
 create or replace procedure getName(id_Pet number) as
 	numePet varchar2(100);
 	begin
-    select nume into numePet from PetitiiAprobate where idPetitie=id_Pet; 
+    select nume into numePet from petitii where idPetitie=id_Pet; 
     dbms_output.put_line(numePet);
   end getName;

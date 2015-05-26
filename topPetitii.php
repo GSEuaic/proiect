@@ -5,7 +5,7 @@ if (!$conn) {
     trigger_error(htmlentities($m['message']), E_USER_ERROR);
 }
 
-$sql = ' select * from petitiiAprobate order by voturi desc';
+$sql = ' select * from petitii order by voturi desc';
 $stid = oci_parse($conn, $sql);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {

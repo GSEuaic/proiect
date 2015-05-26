@@ -26,11 +26,11 @@ body {
 }
 
 .sidebar{
-float:left;
-padding-left: 1%;
-width:33%;
-position: relative;
-padding-bottom: 1%;
+  float:left;
+  padding-left: 1%;
+  width:33%;
+  position: relative;
+  padding-bottom: 1%;
 }
 
 
@@ -64,10 +64,10 @@ padding-bottom: 1%;
 }
 
 .camp .campMic{
-    background:#95CAE4;
-    height: 25px;
-    border-radius:3px;
-    width:100%;
+  background:#95CAE4;
+  height: 25px;
+  border-radius:3px;
+  width:100%;
 }
 
 .camp .campMare{
@@ -86,7 +86,7 @@ padding-bottom: 1%;
 }
 
 p{
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .specificatiiExtra{
@@ -98,7 +98,7 @@ p{
   height:25px;
   line-height:40px;
   color:#3F5D7D;
-  font-size:14px;
+  font-size:12px;
   cursor:pointer;
   width:50%;
 }
@@ -157,7 +157,7 @@ p{
 }
 .Meniu a{
   background-color: white;
-    color:#3F5D7D;
+  color:#3F5D7D;
   font-weight: bold;
   position: relative;
   margin: 5%;
@@ -203,7 +203,7 @@ form a {
 
 
 .titlu{
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
 }
 
@@ -221,4 +221,27 @@ header div{
 
 #dreapta{
   float:right;
+}
+
+h2{
+  font-size: 14px;
+}
+body {
+  font-size: 100%;
+  line-height: 1.6875;
+  
+}
+@media only screen and (max-width: 400px) {
+  body { font-size:90%;}
+}
+@media only screen and (max-width: 800px) {
+  body { font-size:100%;}
+}  
+
+@media only screen and (max-width: 1100px) {
+  body { font-size:120%;}
+}
+@media only screen and (min-width: 1100px) {
+  body { font-size:120%;}
+  .wrap {max-width:770px;}
 }

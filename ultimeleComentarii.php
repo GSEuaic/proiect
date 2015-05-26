@@ -7,7 +7,7 @@ if (!$conn) {
 }
 
 $sql = ' select * from (SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
-FROM Comentarii c join petitiiAprobate p on c.idPetitie=p.idPetitie join Conturi j on j.idCont=c.idCont order by c.idcomentariu desc) where rownum<4';
+FROM Comentarii c join petitii p on c.idPetitie=p.idPetitie join Conturi j on j.idCont=c.idCont order by c.idcomentariu desc) where rownum<4';
 $stid = oci_parse($conn, $sql);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
