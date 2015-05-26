@@ -11,6 +11,7 @@ PROCEDURE makecsv;PROCEDURE readcsv;
     RETURN VARCHAR2; 
   FUNCTION getNext(linie IN OUT VARCHAR2) 
     RETURN VARCHAR2; 
+  procedure dropAllTheTables;
   END csv_util; 
 / 
 CREATE OR replace PACKAGE BODY 
@@ -100,6 +101,7 @@ WHEN utl_file.write_error THEN --8
 END; 
 PROCEDURE readcsv 
 IS 
+  fisier varchar2(100);
   fi utl_file.file_type; 
   v_line  VARCHAR2(2000); 
   text1   VARCHAR2(1000); 
@@ -113,6 +115,7 @@ IS
   cate    NUMBER :=0; 
   linie   NUMBER :=0; 
 BEGIN 
+  fisier:='A_CONTURI.CSV';
   fi := utl_file.fopen ('MYCSV', 'A_CONTURI.CSV', 'R'); 
   IF utl_file.is_open(fi) THEN 
     utl_file.get_line(fi, v_line, 2000); 
@@ -120,8 +123,7 @@ BEGIN
     LOOP 
       BEGIN 
         utl_file.get_line(fi, v_line, 2000); 
-        dbms_output.put_line('BEFORE:' 
-        ||v_line); 
+        linie:=linie+1;
         IF v_line IS NULL THEN 
           EXIT; 
         END IF; 
@@ -129,17 +131,21 @@ BEGIN
         text1:=csv_util.getNext(v_line); 
         text2:=csv_util.getNext(v_line); 
         dbms_output.put_line('INSERT INTO CONTURI VALUES(' ||number1 ||',"' ||text1 ||'","' ||text2 ||'")'); 
+        insert into Conturi values(number1,text1,text2);
       EXCEPTION 
       WHEN no_data_found THEN 
         EXIT; 
       END; 
     END LOOP; 
     ---GATA CONTURI 
+    fisier:='A_PETITII.CSV';
     fi := utl_file.fopen ('MYCSV', 'A_PETITII.CSV', 'R'); 
     utl_file.get_line(fi, v_line, 2000); 
+    linie:=linie+1;
     LOOP 
       BEGIN 
         utl_file.get_line(fi, v_line, 2000); 
+        linie:=linie+1;
         IF v_line IS NULL THEN 
           EXIT; 
         END IF; 
@@ -152,17 +158,21 @@ BEGIN
         text4:=csv_util.getNext(v_line);  
         data1:=csv_util.getNext(v_line);  
         dbms_output.put_line('INSERT INTO PETTII VALUES(' ||number1 ||'","' ||number2 ||'","' ||number3 ||'","'||text1 ||'","' ||data1||');'); 
+        insert into petitiiAprobate values(number1,number2,number3,text1,text2,text3,text4,data1);
       EXCEPTION 
       WHEN no_data_found THEN 
         EXIT; 
       END; 
     END LOOP; 
     ----GATA PETITIILE 
+    fisier:='A_COMENTARII.CSV';
     fi := utl_file.fopen ('MYCSV', 'A_COMENTARII.CSV', 'R'); 
     utl_file.get_line(fi, v_line, 2000); 
+    linie:=linie+1;
     LOOP 
       BEGIN 
         utl_file.get_line(fi, v_line, 2000); 
+        linie:=linie+1;
         IF v_line IS NULL THEN 
           EXIT; 
         END IF;
@@ -178,12 +188,14 @@ BEGIN
       END; 
     END LOOP; 
     --GATA COMENTARIILE 
-    
+    fisier:='A_CATEGORII.CSV';
     fi := utl_file.fopen ('MYCSV', 'A_CATEGORII.CSV', 'R'); 
     utl_file.get_line(fi, v_line, 2000);  
+    linie:=linie+1;
     LOOP 
       BEGIN 
         utl_file.get_line(fi, v_line, 2000); 
+        linie:=linie+1;
         IF v_line IS NULL THEN 
           EXIT; 
         END IF; 
@@ -200,6 +212,8 @@ BEGIN
     --GATA CITIREA 
   END IF; 
   utl_file.fclose(fi); 
+  exception when others then
+    dbms_output.put_line('eroare cauzata de linia :'||linie||'in fisierul '||fisier);
 END; 
 FUNCTION formatline(line VARCHAR2) 
   RETURN VARCHAR2 
@@ -235,4 +249,32 @@ FUNCTION getNext(linie IN OUT VARCHAR2)
       END IF; 
     END IF; 
   END; 
+  procedure dropAllTheTables is
+  v_CursorID NUMBER;
+  v_String VARCHAR2(500);
+  v_NUMRows INTEGER; 
+  begin
+  v_CursorID:= DBMS_SQL.OPEN_CURSOR;
+  v_String :='drop table petitiiAprobate cascade constraints';
+  DBMS_SQL.PARSE(v_CursorID,v_String,DBMS_SQL.V7);
+  v_NumRows := DBMS_SQL.EXECUTE(v_CursorID);
+  v_String :='drop table Comentarii cascade constraints';
+  DBMS_SQL.PARSE(v_CursorID,v_String,DBMS_SQL.V7);
+  v_NumRows := DBMS_SQL.EXECUTE(v_CursorID);
+  v_String :='drop table Categorii cascade constraints';
+  DBMS_SQL.PARSE(v_CursorID,v_String,DBMS_SQL.V7);
+  v_NumRows := DBMS_SQL.EXECUTE(v_CursorID);
+  v_String :='drop table Conturi cascade constraints';
+  DBMS_SQL.PARSE(v_CursorID,v_String,DBMS_SQL.V7);
+  v_NumRows := DBMS_SQL.EXECUTE(v_CursorID);
+  end;
+  
+  
   END csv_util; 
+  /
+  begin
+  csv_util.readcsv;end;
+  /
+  truncate table categorii;
+  truncate table comentarii;
+  truncate table conturi;

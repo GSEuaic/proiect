@@ -110,32 +110,71 @@ function searchPet($str)
 	else echo '*inserati termen in bara de cautare';
 
 	oci_close($conn);
-}
-function getComentarii($id){
+}	function incarca(){
+		$conn = oci_connect("george", "george", "localhost/XE");
+		if (!$conn) {
+			$m = oci_error();
+			trigger_error(htmlentities($m['message']), E_USER_ERROR);
+		}
+
+		$sql = 'begin csv_util.readcsv;end';
+		$stid = oci_parse($conn, $sql);
+		oci_execute($stid);
+		oci_free_statement($stid);
+		oci_close($conn);
+
+	}
+
+
+function getComentarii($id,$p){
 	$conn = oci_connect("george", "george", "localhost/XE");
 	if (!$conn) {
 		$m = oci_error();
 		trigger_error(htmlentities($m['message']), E_USER_ERROR);
 	}
 
-	$sql = 'SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
+	$sql = 'select * from(
+	SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
 	FROM Comentarii c join petitiiAprobate p on c.idPetitie=p.idPetitie 
 	join Conturi j on j.idCont=c.idCont 
-	where c.idPetitie=:iddd';
+	where c.idPetitie=:iddd and rownum<:panala order by c.idComentariu desc) 
+	where rownum <4 
+	order by idComentariu';
 	$stid = oci_parse($conn, $sql);
 	oci_bind_by_name($stid, ':iddd', $id);
+	$a=$p*3+4;
+	oci_bind_by_name($stid, ':panala', $a);
 	oci_execute($stid);
 	$done=0;
 	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
 		$done=1;
 		echo '<div class="campSidebar "><h2>'.$row['USERNAME'].'  a comentat: <br>'.substr($row['TEXTCOMENTARIU'],0,50).'...</h2>';
-    //echo'la petitia: <a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME']."</a></h2>";
 		echo '<br></div>';
 	}
 	if(!$done){
 		echo "<p>Nu sunt comentarii</p>";}
-		oci_free_statement($stid);
-		oci_close($conn);
+	else{
+		if($p!=0) 
+		{	echo '<a href="seePetitionInfo.php?idPet='.$id.'&&pagina=0"> FIRST </a> ... ';
+				echo '<a href="seePetitionInfo.php?idPet='.$id.'&&pagina='.($p-1).'"> previous </a> ... ';
+		}
+		$sql = 'select count(*) from comentarii where idpetitie=:iddd';
+		$stid = oci_parse($conn, $sql);
+		oci_bind_by_name($stid, ':iddd', $id);
+		oci_execute($stid);
+		$row=oci_fetch_row($stid);
+		$cate=oci_result($stid, 1);
+		$cate=round($cate/3)-4;
+		if($p<$cate)
+			{
+				echo '<a href="seePetitionInfo.php?idPet='.$id.'&&pagina='.($p+1).'"> next </a> ... ';
+				echo '<a href="seePetitionInfo.php?idPet='.$id.'&&pagina='.$cate.'">LAST </a>';
+			}
+	}
+
+	oci_free_statement($stid);
+	oci_close($conn);
 
 	}
+
 	?>

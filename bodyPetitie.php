@@ -12,7 +12,10 @@ print "<h2>Numele petitiei:</h2><br> $numePetitie<br> <h2>Descrierea petitiei: <
 	</p>
 	<p> <h2>Comentarii:</h2></p>
 <?php
-getComentarii($_REQUEST['idPet']);
+if(isset($_REQUEST['pagina']))
+	$p = $_REQUEST['pagina'];
+else $p=1;
+getComentarii($_REQUEST['idPet'],$p);
 ?>
 	
 </div>

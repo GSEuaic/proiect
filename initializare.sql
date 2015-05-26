@@ -21,15 +21,6 @@ create table petitiiaprobate(
 /
 drop table petitiineaprobate cascade constraints
 /
-create table petitiineaprobate(
-    idpetitie number(10) primary key,
-    idinitiator number(10) references conturi(idcont),
-    nume varchar2(22),
-    destinatar number(10),
-    descriere varchar2(500),
-    categorie varchar2(100)
-    )
-/
 drop table comentarii cascade constraints
 /
 create table comentarii(
@@ -55,36 +46,6 @@ create table categorii(
     nume varchar2(50)
     )
 /
-insert into categorii values(1,'mediu inconjurator')
-/
-insert into categorii values(2,'drepturile omului')
-/
-insert into categorii values(3,'educatie')
-/
-insert into categorii values(4,'sanatate')
-/
-insert into categorii values(6,'tehnologie')
-/
-insert into categorii values(5,'nedreptati generale')
-/
-insert into conturi values(100,'usertest','pass')
-/
-insert into petitiiaprobate values(1,0,100,'petitie1',1111,'preturi mari',1,sysdate)
-/
-insert into petitiiaprobate values(2,0,100,'petitie2',1111,'preturi mari',1,sysdate-2)
-/
-insert into petitiiaprobate values(3,0,100,'petitie3',1111,'preturi mari',1,sysdate-3)
-/
-insert into petitiiaprobate values(4,0,100,'petitie4',1111,'preturi mari',1,sysdate-4)
-/
-insert into petitiiaprobate values(5,0,100,'petitie5',1111,'preturi mari',1,sysdate-5)
-/
-insert into comentarii values(7,sysdate,100,2,'comaodmfoadsmf asdfoasdfoasmdo faosdkf oaskdfokasdofkoas dkf')
-/
-insert into comentarii values(2,sysdate,100,2,'comaodmfofaosdkf oaskdfokasdofkoas dkf')
-/
-insert into comentarii values(5,sysdate,100,1,'kasdofkoas dkf')
-/
 drop  procedure getname
 /
 create procedure getname(id_pet number, numepet out varchar2, descpet out varchar2) as
@@ -106,7 +67,7 @@ drop procedure adaugapetitie
 create procedure adaugapetitie(idinitiator number,nume varchar2,destinatar varchar2,descriere varchar2,categorie varchar2)
 is
 begin
-    insert into petitiiaprobate values(getnoofpetitions()+1,0,idinitiator,nume,destinatar,descriere,categorie,sysdate);
+    insert into petitiiaprobate(idinitiator,nume ,destinatar,descriere,categorie) values(idinitiator,nume,destinatar,descriere,categorie);
 end adaugapetitie;
 /
 drop function getnewcontid
@@ -126,4 +87,27 @@ create procedure adaugacont(user varchar2, pass varchar2) as
 idcont number;
 begin
     insert into conturi values(getnewcontid(),user,pass);
-end adaugacont;
+end adaugacont; 
+/
+create or replace trigger incrementComentarii 
+  before insert on comentarii 
+  for each row
+  declare
+  idC number(10);
+BEGIN
+  select COUNT(*) into idC FROM COMENTARII ;
+  :new.idComentariu:=idC+1;
+END;
+/
+create or replace trigger incrementPetitii
+before insert on petitiiAprobate
+for each row
+declare
+cate number(10);
+begin
+:new.dataPostare:=sysdate;
+:new.voturi:=0;
+select count(*) into cate from petitiiAprobate;
+:new.idPetitie:=cate+1;
+end;
+/
