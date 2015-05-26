@@ -12,6 +12,9 @@
 	<?php include 'header.php'; ?>
 </HEADER>
 <body>
+    <?php 
+    lockPetitie($_REQUEST['idPet']);
+     ?>
 	<div class="content campGeneral camp">
 		<form action="modifica.php" method="post" id="FormId">
             <div class="campGeneral camp">

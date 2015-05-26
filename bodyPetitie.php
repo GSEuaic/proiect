@@ -6,7 +6,8 @@ include "functions.php";
 $numePetitie = getNume($_REQUEST['idPet']);
 $descrierePetitie = getDescriere($_REQUEST['idPet']);
 $modifica = '<a id="dreapta" href="http://localhost/modificaPetitie.php?idPet='.$_REQUEST['idPet'].'">Modifica</a>';
-echo $modifica;
+//if(inModificare($_REQUEST['idPet'])==0)
+	echo $modifica;
 print "<h2>Numele petitiei:</h2><br> $numePetitie<br> <h2>Descrierea petitiei: </h2><br> $descrierePetitie"; //numele petitiei
 ?>
 	</p>

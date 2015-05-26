@@ -28,6 +28,8 @@ if(isset($_FILES["zip_file"]["name"])) {
   
       unlink($target_path);
     }
+    include 'functions.php';
+    incarca();
     $message = "Your .zip file was uploaded and unpacked.";
   } else {  
     $message = "There was a problem with the upload. Please try again.";

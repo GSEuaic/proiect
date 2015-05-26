@@ -42,7 +42,7 @@
 <div class="campGeneral ultimelePetitii">
 <?php include 'ultimelepetitii.php';?>
 </div>
-<div class="campGeneral ultimeleComentarii">';
+<div class="campGeneral ultimeleComentarii">
 <?php include 'ultimeleComentarii.php'; ?>
 </div>
 </div>

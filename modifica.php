@@ -1,4 +1,7 @@
 <?php
+include 'functions.php';
+if(getInModificare($_REQUEST['idulPet'])){
+
 $conn = oci_connect("george", "george", "localhost/XE");
 if (!$conn) {
     $m = oci_error();
@@ -27,6 +30,10 @@ oci_bind_by_name($stmt,':dest',$dest,-1);
 oci_execute($stmt) or die("Eroare");
 oci_close($conn); 
 echo "am modificat";
+unlockPetitie($idPet);
 $loc = "Location: /seePetitionInfo.php?idPet=$idPet";
 header( $loc ) ;
+
+}
+else echo "cineva deja modifica";
  ?>

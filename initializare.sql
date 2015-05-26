@@ -112,3 +112,7 @@ select count(*) into cate from petitii;
 end;
 /
 select * from petitii where lower(nume) like lower('%kav%')
+/
+truncate table inModificare;
+create table inModificare(petitie number(10));
+select * from inModificare

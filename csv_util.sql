@@ -215,7 +215,7 @@ BEGIN
   END IF; 
   utl_file.fclose(fi); 
   exception when others then
-    dbms_output.put_line('eroare cauzata de linia :'||linie||'in fisierul '||fisier);
+     raise_application_error (-20001,'eroare cauzata de linia :'||linie||'in fisierul '||fisier);
 END; 
 FUNCTION formatline(line VARCHAR2) 
   RETURN VARCHAR2 
@@ -274,11 +274,10 @@ FUNCTION getNext(linie IN OUT VARCHAR2)
   
   END csv_util; 
   /
-/*
+
   begin
   csv_util.readcsv;end;
   /
   truncate table categorii;
   truncate table comentarii;
   truncate table conturi;
-  */
