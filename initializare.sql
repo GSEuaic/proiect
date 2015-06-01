@@ -3,7 +3,7 @@ drop table conturi cascade constraints
 create table conturi(
     idcont number(10) primary key,
     username  varchar2(100),
-    password varchar2(100)
+    pass varchar2(100)
     )   
 /
 drop table petitii cascade constraints
@@ -33,6 +33,7 @@ create table comentarii(
 /
 drop table voturi cascade constraints
 /
+drop type voturi;
 create table voturi(
     idcont  number(10) ,
     petitievotata number(10) references petitii(idpetitie),
@@ -120,3 +121,13 @@ select * from comentarii
 select * from conturi
 /
 insert into Comentarii(idcont,idpetitie,textcomentariu) values(101,3,'ssss')
+
+
+/
+select count(idcont) from conturi where username='dddddd' and password = 'ddd'
+/
+insert into conturi values(102,'root','f6a462380ce89410dc521de60eb0d40d')
+/
+select count(*) from conturi where username='root' 
+/
+desc conturi

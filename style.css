@@ -23,7 +23,7 @@ body {
   text-align: left;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  box-shadow: 0.2em 0.2em red,-0.2em -0.2em red;
+  box-shadow: 0.2em 0.2em #3F5D7D,-0.2em -0.2em gray;
 }
 
 .sidebar{
@@ -153,8 +153,8 @@ p{
   width: 89%;
   margin:0%;
   padding: 0%;
-  zbackground-color:#3F5D7D;
-  background-color: white;
+  background-color:#3F5D7D;
+  zbackground-color: white;
 }
 .Meniu a{
   background-color: white;
@@ -164,10 +164,12 @@ p{
   margin: 5%;
   padding:5 3 5 3%;
   text-align: left;
+  /*
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
 
   box-shadow: 0.2em 0.2em red,-0.2em -0.2em red;
+  */
   padding-right:3%;
   margin:0 1 0 1%;
 }
@@ -264,6 +266,7 @@ body {
   padding: 1px;
   width:calc(25% - 8px);
   float: left;
+  border-radius: 5px;
 }
 .nextPrev2 a{
   text-align: center;
@@ -271,8 +274,21 @@ body {
   padding: 1px;
   width:calc(50% - 8px);
   float: left;
+  border-radius: 5px;
 } 
 
+.buton, .buton:active, .buton:visited {
+  border-style: solid;
+  color: #3F5D7D;
+  border-width: 2px;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 0 1% 0 1%;
+  margin-left: 1%;
+}
 
-
+.campSidebar a{
+  color:#3F5D7D;
+  text-transform: capitalize;
+}
 

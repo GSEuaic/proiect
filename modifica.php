@@ -11,7 +11,6 @@ $idPet=$_REQUEST['idulPet'];
 $nume=$_REQUEST['nume'];
 $cat=$_REQUEST['categorie'];
 $dest=$_REQUEST['destinatar'];
-echo $idPet;
 
 $sql = 'update petitii 
 		set descriere=:descr,
@@ -19,7 +18,6 @@ $sql = 'update petitii
 		categorie=:categ,
 		destinatar=:dest
 		where idPetitie=:idp';
-
 $stmt = oci_parse($conn,$sql);
 oci_bind_by_name($stmt,':idp',$idPet,-1);
 oci_bind_by_name($stmt,':descr',$descriere,-1);
@@ -28,9 +26,6 @@ oci_bind_by_name($stmt,':categ',$cat,-1);
 oci_bind_by_name($stmt,':dest',$dest,-1);
 oci_execute($stmt) or die("Eroare");
 oci_close($conn); 
-echo "am modificat";
-unlockPetitie($idPet);
 $loc = "Location: /seePetitionInfo.php?idPet=$idPet";
 header( $loc ) ;
-else echo "cineva deja modifica";
  ?>

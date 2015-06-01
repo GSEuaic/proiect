@@ -12,9 +12,6 @@
 	<?php include 'header.php'; ?>
 </HEADER>
 <body>
-    <?php 
-    lockPetitie($_REQUEST['idPet']);
-     ?>
 	<div class="content campGeneral camp">
 		<form action="modifica.php" method="post" id="FormId">
             <div class="campGeneral camp">
@@ -27,9 +24,8 @@
                   <?php $s=getNume($_REQUEST['idPet']); echo "value= \"".$s."\""; ?>
                    size="40"  required/></p>
                 <p>Descrierea problemei<br />
-                    <input class="campMare" type="text" name="descriere" 
-                    <?php $s=getDescriere($_REQUEST['idPet']); echo "value= \"".$s."\""; ?> 
-                    size="40"  /></p>
+                    <textarea class="campMare" type="text" name="descriere"  
+                    size="40"  > <?php $s=getDescriere($_REQUEST['idPet']); echo $s; ?></textarea> </p>
                     <p>Categorie:
                         <select class="select" name="categorie" id="categoriePetitie" required>
                         <option value='1' >Mediu inconjurator</option>
@@ -38,9 +34,7 @@
                     </select>
                 </p>
                 <p>Cui adresezi petitia?<br />
-                    <input class="campMare" type="text" name="destinatar" size="40"cols="40" rows="10"
-                    <?php $s=getDestinatar($_REQUEST['idPet']); echo "value= \"".$s."\""; ?>
-                    >
+                    <textarea class="campMare" type="text" name="destinatar" size="40"cols="40" rows="10"><?php $s=getDestinatar($_REQUEST['idPet']); echo  $s; ?></textarea>
                 </p>
                 <p><input type="submit" value="Modifica"/></p>
                 <p class="specificatiiExtra">  * Numele si prenumele sunt anonime.</p>

@@ -49,4 +49,45 @@ set serveroutput on;
 /
 select * from petitii
 /
-select count(*) from comentarii
+select * from comentarii where idpetitie=6;
+delete from comentarii where idpetitie=6
+;
+begin
+  for i in 1..13 loop
+    insert into comentarii(idcont,idpetitie,textcomentariu) values(100,6,'comm'||i); 
+    end loop;
+end;
+
+/
+
+
+select * from(
+						SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
+						FROM Comentarii c join petitii p on c.idPetitie=p.idPetitie 
+						join Conturi j on j.idCont=c.idCont 
+						where c.idPetitie=6 and 
+						rownum<6 order by c.IDCOMENTARIU   ) 
+			where rownum <=5 
+      order by idcomentariu desc
+      /
+      
+      SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
+						FROM Comentarii c join petitii p on c.idPetitie=p.idPetitie 
+						join Conturi j on j.idCont=c.idCont 
+						where c.idPetitie=6 and 
+						rownum<6 order by idcomentariu
+            
+            
+///
+
+select * from(
+		SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
+		FROM Comentarii c join petitii p on c.idPetitie=p.idPetitie 
+		join Conturi j on j.idCont=c.idCont 
+		where c.idPetitie=6 and rownum<9 order by c.idComentariu desc) 
+	where rownum <4;
+  /
+  select * from (select * from (select * from comentarii where rownum <6 ) order by idcomentariu desc) where rownum<4
+  
+	
+            

@@ -1,26 +1,22 @@
 <div class="content campGeneral camp">
 	<p>
-		<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-		<script>
-		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-		if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}
-	}(document, 'script', 'twitter-wjs');
-	</script>
-	<div
-	class="fb-like"
-	data-share="true"
-	data-width="450"
-	data-show-faces="true">
-</div>
+
 <?php
 include "functions.php";
 $numePetitie = getNume($_REQUEST['idPet']);
-$descrierePetitie = getDescriere($_REQUEST['idPet']);
-$modifica = '<a id="dreapta" href="http://localhost/modificaPetitie.php?idPet='.$_REQUEST['idPet'].'">Modifica</a>';
+$descrierePetitie = getDescriere($_REQUEST['idPet']);	
+$modifica = '<a class="buton" id="dreapta" href="http://localhost/modificaPetitie.php?idPet='.$_REQUEST['idPet'].'">Modifica</a>';
 echo $modifica;
-print "<h2>Numele petitiei:</h2>$numePetitie<br> <h2>Descrierea petitiei: </h2> $descrierePetitie"; //numele petitiei
+if(!isset($_COOKIE['nrCont'])) 
+	$cont = 'XPSe7450';
+else $cont = $_COOKIE['nrCont'];
+$voteaza  = '<a class="buton" id="dreapta" href="http://localhost/voteazaPetitia.php?idPet='.$_REQUEST['idPet'].'&cont='.$cont.'">Voteaza petitia</a>';
+echo $voteaza;
+print "<h2>Numele petitiei:</h2>$numePetitie<br> <h2>Descrierea petitiei: </h2> $descrierePetitie"; 
+
 ?>
 </p>
+<?php include "media.php"; ?>
 <p> <h2>Comentarii:</h2></p>
 <?php
 if(isset($_REQUEST['pagina']))
