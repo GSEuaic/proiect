@@ -14,12 +14,12 @@ if(isset($_REQUEST['loginUser']) and isset($_REQUEST['loginPass']) )
 	oci_execute($stid);
 	oci_fetch_row($stid);
 	$cate = oci_result($stid, 1);
-	if($cate==1)
+	if($cate)
 	{
 		echo 'autentificare reusita';
-		setcookie('logged', 'yes', time() + (86400 * 30), "/"); // 86400 = 1 day
+		setcookie('logged', $cate, time() + (86400 * 30), "/"); // 86400 = 1 day
 	}
 } 
 
 ?>	
-<meta http-equiv="refresh" content="5; url=localhost" />
+<meta http-equiv="refresh" content="2; url=/" />

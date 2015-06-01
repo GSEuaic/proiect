@@ -7,9 +7,9 @@ $numePetitie = getNume($_REQUEST['idPet']);
 $descrierePetitie = getDescriere($_REQUEST['idPet']);	
 $modifica = '<a class="buton" id="dreapta" href="http://localhost/modificaPetitie.php?idPet='.$_REQUEST['idPet'].'">Modifica</a>';
 echo $modifica;
-if(!isset($_COOKIE['nrCont'])) 
+if(!isset($_COOKIE['logged'])) 
 	$cont = 'XPSe7450';
-else $cont = $_COOKIE['nrCont'];
+else $cont = $_COOKIE['logged'];
 $voteaza  = '<a class="buton" id="dreapta" href="http://localhost/voteazaPetitia.php?idPet='.$_REQUEST['idPet'].'&cont='.$cont.'">Voteaza petitia</a>';
 echo $voteaza;
 print "<h2>Numele petitiei:</h2>$numePetitie<br> <h2>Descrierea petitiei: </h2> $descrierePetitie"; 

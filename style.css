@@ -277,7 +277,7 @@ body {
   border-radius: 5px;
 } 
 
-.buton, .buton:active, .buton:visited {
+.buton, .buton:visited {
   border-style: solid;
   color: #3F5D7D;
   border-width: 2px;

@@ -203,7 +203,8 @@ function getTopPetitii(){
 	oci_execute($stid);
 	$ab=1;
 	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-		echo '<div class="campSidebarz "><h2>'.$ab.'.'.$row['NUME'].' cu  '.$row['VOTURI'].' voturi<br></h2>';
+		//echo '<div class="campSidebarz "><h2>'.$ab.'.'.$row['NUME'].' cu  '.$row['VOTURI'].' voturi<br></h2>';
+		echo '<div class="campSidebarz "><h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'"">'.$ab.'.'.$row['NUME'].'</a> cu  '.$row['VOTURI'].' voturi<br></h2>';
 		$ab=$ab+1;
 		echo '</div>';
 	}

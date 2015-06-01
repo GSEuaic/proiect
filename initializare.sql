@@ -118,7 +118,8 @@ select * from petitii
 select * from comentarii
 ;
 /
-select * from conturi
+select * from voturi
+/
 /
 insert into Comentarii(idcont,idpetitie,textcomentariu) values(101,3,'ssss')
 
@@ -130,4 +131,22 @@ insert into conturi values(102,'root','f6a462380ce89410dc521de60eb0d40d')
 /
 select count(*) from conturi where username='root' 
 /
-desc conturi
+desc voturi
+/
+select count(*) from voturi where petitievotata=10
+delete 
+/
+create or replace trigger adaugaVot after insert on voturi
+for each row
+declare 
+idpet number(10);
+begin
+  idpet:=:new.petitievotata;
+  update petitii set voturi=voturi+1 where idPetitie=idpet;
+end;
+/
+drop trigger adaugaVot
+/
+desc petitii
+/
+truncate table voturi
