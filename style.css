@@ -5,6 +5,7 @@ body {
   background-color: #95CAE4;
   width: 90%;
   margin-top: 0%;
+  min-width: 400px;
 }
 
 /* Sidebar */
@@ -51,7 +52,7 @@ body {
   text-align: left;
   /* border-radius */
   -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+    -moz-border-radius: 5px;
   /* box-shadow */
   -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 2px;
   -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 2px;
@@ -199,11 +200,13 @@ form a {
   text-align: center;
   margin-left:1%;
   padding: 0%;
+  font-size: inherit;
 }
 
 
+
 .titlu{
-  font-size: 15px;
+  font-size: 115%;
   text-align: center;
 }
 
@@ -224,24 +227,52 @@ header div{
 }
 
 h2{
-  font-size: 14px;
+  font-size: 110%;
 }
 body {
   font-size: 100%;
   line-height: 1.6875;
   
 }
-@media only screen and (max-width: 400px) {
-  body { font-size:90%;}
+@media only screen and (max-width: 600px) {
+  body { font-size:80%;
+  }
+  .ultimelePetitii, .ultimeleComentarii {
+    visibility: hidden;
+  }
+  .content {
+    width:89%;
+  }
+
+
 }
 @media only screen and (max-width: 800px) {
-  body { font-size:100%;}
+  body { font-size:90%;}
 }  
 
 @media only screen and (max-width: 1100px) {
-  body { font-size:120%;}
+  body { font-size:110%;}
 }
 @media only screen and (min-width: 1100px) {
-  body { font-size:120%;}
+  body { font-size:110%;}
   .wrap {max-width:770px;}
 }
+
+.nextPrev a{
+  text-align: center;
+  border-style: outset;
+  padding: 1px;
+  width:calc(25% - 8px);
+  float: left;
+}
+.nextPrev2 a{
+  text-align: center;
+  border-style: outset;
+  padding: 1px;
+  width:calc(50% - 8px);
+  float: left;
+} 
+
+
+
+

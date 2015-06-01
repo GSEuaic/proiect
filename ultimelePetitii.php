@@ -15,9 +15,8 @@ $stid = oci_parse($conn, $sql);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
     echo '<div class="campSidebar ">
-    <h2><a href="seePetitionInfo.php?idPet='.substr($row['IDPETITIE'],0,100).'">'.$row['NUME'] ."</a>
-    <br>".substr($row['DESCRIERE'],0,100)."...</h2>
-    </div>";
+    <a href="seePetitionInfo.php?idPet='.substr($row['IDPETITIE'],0,100).'">'.$row['NUME'] ."</a>
+    <br>".substr($row['DESCRIERE'],0,100)."...</div>";
 }
 
 oci_free_statement($stid);

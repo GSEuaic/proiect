@@ -281,3 +281,5 @@ FUNCTION getNext(linie IN OUT VARCHAR2)
   truncate table categorii;
   truncate table comentarii;
   truncate table conturi;
+  delete from comentarii where idComentariu>50;
+  select * from comentarii;

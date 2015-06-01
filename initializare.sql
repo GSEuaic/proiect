@@ -97,6 +97,7 @@ create or replace trigger incrementComentarii
 BEGIN
   select COUNT(*) into idC FROM COMENTARII ;
   :new.idComentariu:=idC+1;
+  :new.dataPostarii:=sysdate;
 END;
 /
 create or replace trigger incrementPetitii
@@ -111,8 +112,11 @@ select count(*) into cate from petitii;
 :new.idPetitie:=cate+1;
 end;
 /
-select * from petitii where lower(nume) like lower('%kav%')
+select * from petitii 
 /
-truncate table inModificare;
-create table inModificare(petitie number(10));
-select * from inModificare
+select * from comentarii
+;
+/
+select * from conturi
+/
+insert into Comentarii(idcont,idpetitie,textcomentariu) values(101,3,'ssss')
