@@ -6,7 +6,7 @@ if (!$conn) {
     $m = oci_error();
     trigger_error(htmlentities($m['message']), E_USER_ERROR);
 }
-$descriere=$_REQUEST['descriere'];
+$descriere=substr($_REQUEST['descriere'],0,990);
 $idPet=$_REQUEST['idulPet'];
 $nume=$_REQUEST['nume'];
 $cat=$_REQUEST['categorie'];

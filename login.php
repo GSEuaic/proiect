@@ -1,13 +1,32 @@
 <html>
 <head>
+	<meta http-equiv="refresh" content="2300" >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title> Pet4Web Main Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
 </head>
+	<?php  include 'loginBar.php'; ?>
+<HEADER id="cuPadding">
+	<?php include 'header.php'; ?>
+</HEADER>
 <body>
-	<form class ="login"  action="log.php">
-		<input id="campLogin" type="text" class="campMic" placeholder="User" name="loginUser">
-		<input id="campLogin" type="password" class="campMic"  name="loginPass">
+	<div class="content campGeneral camp">
+		<h2>Log in</h2>
+		<form class="PaginaLogin"  action="log.php">
+		<input  type="text" class="campMic" placeholder="User" name="loginUser">
+		<input type="password" class="campMic"  name="loginPass">
 		<input type="submit" value="Log In"/>
 	</form>
+	</div>
+<div class="sidebar">
+
+<div class="campGeneral ultimelePetitii">
+<?php include 'ultimelepetitii.php';?>
+</div>
+<div class="campGeneral ultimeleComentarii">
+<?php include 'ultimeleComentarii.php'; ?>
+</div>
+</div>
 </body>
 </html>

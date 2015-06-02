@@ -10,7 +10,7 @@ $stid = oci_parse($conn, 'begin csv_util.makecsv; end;');
 oci_execute($stid);
 
 $zip = new ZipArchive();
-$filename = "./raportcsv.zip";
+$filename = "./raport.zip";
 
 if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
     exit("cannot open <$filename>\n");
@@ -27,7 +27,7 @@ $zip->addFile($thisdir . "/A_CATEGORII.CSV","/A_CATEGORII.CSV");
 $zip->addFile($thisdir . "/A_COMENTARII.CSV","/A_COMENTARII.CSV");
 $zip->addFile($thisdir . "/A_CONTURI.CSV","/A_CONTURI.CSV");
 $zip->addFile($thisdir . "/A_PETITII.CSV","/A_PETITII.CSV");
-echo "<p><a href=\"/raportcsv.zip\"> Raport format csv</a></p>";
+echo "<p><a href=\"/raport.zip\"> Raport format csv</a></p>";
 }
 
 ?>

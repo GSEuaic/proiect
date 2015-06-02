@@ -191,26 +191,6 @@ if($done==0){
 
 }
 
-function getTopPetitii(){
-	$conn = oci_connect("george", "george", "localhost/XE");
-	if (!$conn) {
-		$m = oci_error();
-		trigger_error(htmlentities($m['message']), E_USER_ERROR);
-	}
-
-	$sql = ' select * from(select * from petitii order by voturi desc) where rownum<6';
-	$stid = oci_parse($conn, $sql);
-	oci_execute($stid);
-	$ab=1;
-	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-		//echo '<div class="campSidebarz "><h2>'.$ab.'.'.$row['NUME'].' cu  '.$row['VOTURI'].' voturi<br></h2>';
-		echo '<div class="campSidebarz "><h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'"">'.$ab.'.'.$row['NUME'].'</a> cu  '.$row['VOTURI'].' voturi<br></h2>';
-		$ab=$ab+1;
-		echo '</div>';
-	}
-	oci_free_statement($stid);
-	oci_close($conn);
-}
 function adaugaComentariu($cont,$id,$text){
 
 	$conn = oci_connect("george", "george", "localhost/XE");
@@ -236,4 +216,108 @@ function startSesiune($user,$pass){
 	setcookie('user', $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 }
 
+function getMyPetitions($cauta){
+	$conn = oci_connect("george", "george", "localhost/XE");
+	if (!$conn) {
+		$m = oci_error();
+		trigger_error(htmlentities($m['message']), E_USER_ERROR);
+	}
+
+	$sql = 'select * from petitii where idinitiator = to_number( :idini )';
+	$stmt = oci_parse($conn, $sql);
+	oci_bind_by_name($stmt, ':idini', $cauta);
+	oci_execute($stmt);
+	$x=0;
+	while (($row = oci_fetch_array($stmt, OCI_ASSOC)) != false) {
+		$x+=1;
+		echo '<div><h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'"">'.$x.'.'.$row['NUME'].'</a>';
+		$modifica = '<a class="buton" id="dreapta" href="http://localhost/modificaPetitie.php?idPet='.$row['IDPETITIE'].'">Modifica</a>';
+		echo $modifica;
+		echo '</h2></div>';
+	}
+	oci_free_statement($stmt);
+	oci_close($conn);
+
+	if(!$x) 
+		echo "<p>Nu aveti nicio petitie inregistrata</p>";
+
+}
+function getTopPetitii(){
+	$conn = oci_connect("george", "george", "localhost/XE");
+	if (!$conn) {
+		$m = oci_error();
+		trigger_error(htmlentities($m['message']), E_USER_ERROR);
+	}
+
+	$sql = ' select * from(select * from petitii order by voturi desc) where rownum<6';
+	$stid = oci_parse($conn, $sql);
+	oci_execute($stid);
+	$ab=1;
+	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
+		echo '<div class="petitiiTop"><h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'"">'.$ab.'.'.$row['NUME'].'</a> cu  '.$row['VOTURI'].' voturi<br></h2>';
+		$ab=$ab+1;
+		echo '</div>';
+	}
+	oci_free_statement($stid);
+	oci_close($conn);
+}
+
+function getOptions(){
+	
+	$conn = oci_connect("george", "george", "localhost/XE");
+	if (!$conn) {
+		$m = oci_error();
+		trigger_error(htmlentities($m['message']), E_USER_ERROR);
+	}
+
+	$sql = ' select * from categorii';
+	$stid = oci_parse($conn, $sql);
+	oci_execute($stid);
+	$ab=1;
+	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
+		echo '<option value="'.$row['IDCATEGORIE'].' ">'.$row['NUME'].'</option>\n';
+	}
+	oci_free_statement($stid);
+	oci_close($conn);
+}
+
+function getultimeleComentarii(){
+	$conn = oci_connect("george", "george", "localhost/XE");
+	if (!$conn) {
+		$m = oci_error();
+		trigger_error(htmlentities($m['message']), E_USER_ERROR);
+	}
+
+	$sql ='select * from (SELECT c.IDCOMENTARIU,c.datapostarii,c.idcont,c.idpetitie,c.textComentariu,p.nume,j.username 
+		FROM Comentarii c join petitii p on c.idPetitie=p.idPetitie join Conturi j on j.idCont=c.idCont order by c.idcomentariu desc) where rownum<4';
+$stid = oci_parse($conn, $sql);
+oci_execute($stid);
+while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
+	echo '<div class="campSidebar "><h2>'.$row['USERNAME'].'  a comentat: <br>'.substr($row['TEXTCOMENTARIU'],0,70).'...</h2>';
+	echo'la petitia: <a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$row['NUME']."</a></h2>";
+	echo '<br></div>';
+}
+oci_free_statement($stid);
+oci_close($conn);
+
+}
+function isAdmin($cont){
+
+	$conn = oci_connect("george", "george", "localhost/XE");
+	if (!$conn) {
+		$m = oci_error();
+		trigger_error(htmlentities($m['message']), E_USER_ERROR);
+	}
+
+	$sql = 'select rang from conturi where idcont=:idp';
+
+	$stmt = oci_parse($conn,$sql);
+	oci_bind_by_name($stmt,':idp',$cont,-1);
+
+	oci_execute($stmt);
+	oci_fetch_row($stmt);
+	$rezultat = oci_result($stmt, 1);
+	oci_close($conn);
+	return $rezultat;	
+}
 ?>

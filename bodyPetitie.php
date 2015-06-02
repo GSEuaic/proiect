@@ -2,11 +2,8 @@
 	<p>
 
 <?php
-include "functions.php";
 $numePetitie = getNume($_REQUEST['idPet']);
 $descrierePetitie = getDescriere($_REQUEST['idPet']);	
-$modifica = '<a class="buton" id="dreapta" href="http://localhost/modificaPetitie.php?idPet='.$_REQUEST['idPet'].'">Modifica</a>';
-echo $modifica;
 if(!isset($_COOKIE['logged'])) 
 	$cont = 'XPSe7450';
 else $cont = $_COOKIE['logged'];

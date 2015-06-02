@@ -101,6 +101,10 @@ BEGIN
   :new.dataPostarii:=sysdate;
 END;
 /
+insert into comentarii values(1,sysdate,3,3,'nonono')
+/
+desc comentarii
+/
 create or replace trigger incrementPetitii
 before insert on petitii
 for each row
@@ -109,7 +113,7 @@ cate number(10);
 begin
 :new.dataPostare:=sysdate;
 :new.voturi:=0;
-select count(*) into cate from petitii;
+select max(idpetitie) into cate from petitii;
 :new.idPetitie:=cate+1;
 end;
 /
@@ -145,8 +149,33 @@ begin
   update petitii set voturi=voturi+1 where idPetitie=idpet;
 end;
 /
-drop trigger adaugaVot
+create or replace trigger adaugaCont before insert on conturi
+for each row
+declare
+idnou number(10);
+begin
+  select max(idcont) into idnou from conturi;
+  :new.idcont:=idnou+1;
+  :new.rang:=1;
+end;
+/
+drop trigger adaugacont;
+select  * from petitii
+/
+delete from petitii where idinitiator=100
 /
 desc petitii
 /
-truncate table voturi
+select * from conturi
+/
+select * from petitii
+/
+update comentarii set idcont=3 where idcont=102
+/
+insert into conturi values(2,'james','blue',1);
+/
+update petitii set idinitiator=104 where idinitiator=100
+/
+update conturi set idcont=3 where username='admin'
+/
+insert into comentarii values()

@@ -1,6 +1,5 @@
 <div class="content campGeneral camp">
 	<?php 
-	include "functions.php";
 	$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	if(strpos($actual_link,"seePetitionInfo"))
 		
@@ -14,11 +13,16 @@
 			if(isset($_REQUEST['cauta']))
 				searchPet($_REQUEST['cauta']);
 		}
-		else
+		elseif(strpos($actual_link,"petitiileMele")){
+			echo '<h2>Petitiile mele</h2>';
+			getMyPetitions($_REQUEST['petitiileMele']);
+		}
+			else
 		{//mainpage
 			echo"	<h2>Top 5 Petitii</h2>";
 			getTopPetitii();
 		} 
+
 	 ?>
 </div>
 <div class="sidebar">

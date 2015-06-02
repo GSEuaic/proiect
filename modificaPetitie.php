@@ -5,7 +5,6 @@
 	<title> Pet4Web Main Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
-    <?php include "functions.php"; ?>
 </head>
 	<?php  include 'loginBar.php'; ?>
 <HEADER id="cuPadding">
@@ -28,9 +27,7 @@
                     size="40"  > <?php $s=getDescriere($_REQUEST['idPet']); echo $s; ?></textarea> </p>
                     <p>Categorie:
                         <select class="select" name="categorie" id="categoriePetitie" required>
-                        <option value='1' >Mediu inconjurator</option>
-                        <option value='2' >TV</option>
-                        <option value='3' >etc</option>
+                        <?php getOptions(); ?>
                     </select>
                 </p>
                 <p>Cui adresezi petitia?<br />
@@ -46,7 +43,7 @@
 <div class="campGeneral ultimelePetitii">
 <?php include 'ultimelepetitii.php';?>
 </div>
-<div class="campGeneral ultimeleComentarii">';
+<div class="campGeneral ultimeleComentarii">
 <?php include 'ultimeleComentarii.php'; ?>
 </div>
 </div>

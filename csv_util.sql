@@ -2,11 +2,12 @@ CREATE
 OR 
 replace directory mycsv AS 'c:\proiect' 
 / 
-GRANT READ,WRITE ON directory mycsv TO sys 
+GRANT READ,WRITE ON directory mycsv TO george 
 / 
 CREATE OR replace PACKAGE csv_util 
 AS 
-PROCEDURE makecsv;PROCEDURE readcsv; 
+PROCEDURE makecsv;
+PROCEDURE readcsv; 
   FUNCTION formatline(line VARCHAR2) 
     RETURN VARCHAR2; 
   FUNCTION getNext(linie IN OUT VARCHAR2) 
@@ -38,16 +39,17 @@ CURSOR cursorcategorii IS
 v_file utl_file.file_type; 
 BEGIN 
   v_file:= utl_file.fopen ('MYCSV', 'A_CONTURI.CSV', 'W'); 
-  utl_file.put_line(v_file,'idcont,username,password,'); 
+  utl_file.put_line(v_file,'idcont,username,pass,'); 
   FOR i IN cursorconturi 
   LOOP 
     utl_file.put_line(v_file,i.idcont 
     ||',' 
     ||csv_util.formatline(i.username) 
     ||',' 
-    ||csv_util.formatline(i.password)); 
+    ||csv_util.formatline(i.pass)); 
   END LOOP; 
   utl_file.fclose (v_file); 
+  
   v_file:= utl_file.fopen ('MYCSV', 'A_PETITII.CSV', 'W'); 
   utl_file.put_line(v_file,'idpetitie,voturi,idinitiator,nume,destinatar,descriere,categorie, datapostare,');
   FOR i IN cursorpetitii 
@@ -93,11 +95,13 @@ BEGIN
     ||csv_util.formatline(i.nume)); 
   END LOOP; 
   utl_file.fclose (v_file); 
+
 EXCEPTION 
 WHEN utl_file.invalid_filehandle THEN 
   raise_application_error(-20001,'INVALID FILE.'); 
 WHEN utl_file.write_error THEN --8 
   raise_application_error (-20002, 'UNABLE TO WRITE TO FILE'); 
+
 END; 
 PROCEDURE readcsv 
 IS 
@@ -115,6 +119,7 @@ IS
   cate    NUMBER :=0; 
   linie   NUMBER :=0; 
 BEGIN 
+/*
   fisier:='A_CONTURI.CSV';
   fi := utl_file.fopen ('MYCSV', 'A_CONTURI.CSV', 'R'); 
   IF utl_file.is_open(fi) THEN 
@@ -216,6 +221,8 @@ BEGIN
   utl_file.fclose(fi); 
   exception when others then
      raise_application_error (-20001,'eroare cauzata de linia :'||linie||'in fisierul '||fisier);
+*/
+dbms_output.put_line('');
 END; 
 FUNCTION formatline(line VARCHAR2) 
   RETURN VARCHAR2 
@@ -273,13 +280,3 @@ FUNCTION getNext(linie IN OUT VARCHAR2)
   
   
   END csv_util; 
-  /
-
-  begin
-  csv_util.readcsv;end;
-  /
-  truncate table categorii;
-  truncate table comentarii;
-  truncate table conturi;
-  delete from comentarii where idComentariu>50;
-  select * from comentarii;

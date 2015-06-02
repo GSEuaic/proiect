@@ -156,6 +156,9 @@ p{
   background-color:#3F5D7D;
   zbackground-color: white;
 }
+.paginaLogin{
+  width: 49%;
+}
 .Meniu a{
   background-color: white;
   color:#3F5D7D;
@@ -292,3 +295,8 @@ body {
   text-transform: capitalize;
 }
 
+.petitiiTop, .petitiiTop:visited {
+text-transform: capitalize;
+color:#3F5D7D;
+
+}
