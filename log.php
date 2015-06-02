@@ -22,4 +22,4 @@ if(isset($_REQUEST['loginUser']) and isset($_REQUEST['loginPass']) )
 } 
 
 ?>	
-<meta http-equiv="refresh" content="2; url=/" />
+<meta http-equiv="refresh" content="0; url=/" />

@@ -295,7 +295,7 @@ body {
   text-transform: capitalize;
 }
 
-.petitiiTop, .petitiiTop:visited {
+.petitiiTop a, .petitiiTop:visited a {
 text-transform: capitalize;
 color:#3F5D7D;
 

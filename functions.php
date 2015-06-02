@@ -254,7 +254,7 @@ function getTopPetitii(){
 	oci_execute($stid);
 	$ab=1;
 	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-		echo '<div class="petitiiTop"><h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'"">'.$ab.'.'.$row['NUME'].'</a> cu  '.$row['VOTURI'].' voturi<br></h2>';
+		echo '<div class="petitiiTop"><h2><a href="seePetitionInfo.php?idPet='.$row['IDPETITIE'].'">'.$ab.'.'.$row['NUME'].'</a> cu  '.$row['VOTURI'].' voturi<br></h2>';
 		$ab=$ab+1;
 		echo '</div>';
 	}
@@ -275,7 +275,7 @@ function getOptions(){
 	oci_execute($stid);
 	$ab=1;
 	while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
-		echo '<option value="'.$row['IDCATEGORIE'].' ">'.$row['NUME'].'</option>\n';
+		echo '<option value="'.$row['IDCATEGORIE'].' ">'.$row['NUME'].'</option> \n';
 	}
 	oci_free_statement($stid);
 	oci_close($conn);

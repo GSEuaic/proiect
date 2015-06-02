@@ -1,3 +1,4 @@
+<!DOCTYPE HTML SYSTEM>
 <html>
 <head>
 	<meta http-equiv="refresh" content="2300" >

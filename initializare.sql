@@ -160,22 +160,3 @@ begin
 end;
 /
 drop trigger adaugacont;
-select  * from petitii
-/
-delete from petitii where idinitiator=100
-/
-desc petitii
-/
-select * from conturi
-/
-select * from petitii
-/
-update comentarii set idcont=3 where idcont=102
-/
-insert into conturi values(2,'james','blue',1);
-/
-update petitii set idinitiator=104 where idinitiator=100
-/
-update conturi set idcont=3 where username='admin'
-/
-insert into comentarii values()

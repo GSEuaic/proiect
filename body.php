@@ -19,8 +19,11 @@
 		}
 			else
 		{//mainpage
+			echo'<br><h2 style="text-align:right">Este nevoie de o singură persoană pentru a începe schimbarea.<br>Începe o petiție on-line și fa-ti mesajul auzit</h2><br>';
+			
 			echo"	<h2>Top 5 Petitii</h2>";
 			getTopPetitii();
+			
 		} 
 
 	 ?>

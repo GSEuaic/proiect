@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ro" xml:lang="ro">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title> Pet4Web Main Page</title>

@@ -57,7 +57,7 @@ oci_fetch_row($stid);
 $cate = oci_result($stid, 1);
 echo "<p>Sunt $cate comentarii postate.</p>";
 
-/*
+
 $stid = oci_parse($conn, 'SELECT * FROM Comentarii order by idPetitie');
 oci_execute($stid);
 
@@ -79,6 +79,6 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
     echo "</tr>\n";
 }
 echo "</table></p>";
-*/
+
 
 ?>
